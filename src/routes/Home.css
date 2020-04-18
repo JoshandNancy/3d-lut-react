@@ -1,0 +1,58 @@
+#lut_vas {
+  display: none;
+}
+
+.canvas {
+  position: relative;
+  width: 40%;
+  height: auto;
+  background-color: white;
+}
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+h2 {
+  font-size: x-large;
+  font-style: oblique;
+}
+
+#dropmsg {
+  color: #0f0f0f;
+}
+
+#lutmsg {
+  color: white;
+}
+
+#jsError {
+  color: white;
+  display: flex;
+  width: 100%;
+  background-color: #006b54;
+}
+
+#dropbox {
+  border: 1px solid#0F0F0F;
+  display: flex;
+  width: 50%;
+  float: left;
+  background-color: #fa7268;
+  padding: 10px;
+}
+
+#lutbox {
+  border: 1px solid #0f0f0f;
+  display: flex;
+  width: 50%;
+  inline-size: auto;
+  background-color: #004680;
+  padding: 10px;
+}
+
+.title {
+  font-weight: 600;
+  color: Teal;
+}
