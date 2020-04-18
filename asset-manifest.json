@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/3d-lut-react/static/css/main.933c93e7.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.44bdf9b2.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.44bdf9b2.chunk.js.map",
-    "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
-    "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
-    "static/js/2.17c41aaa.chunk.js": "/3d-lut-react/static/js/2.17c41aaa.chunk.js",
-    "static/js/2.17c41aaa.chunk.js.map": "/3d-lut-react/static/js/2.17c41aaa.chunk.js.map",
-    "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.aadfeef973ec21b21243f097970a699e.js": "/3d-lut-react/precache-manifest.aadfeef973ec21b21243f097970a699e.js",
-    "service-worker.js": "/3d-lut-react/service-worker.js",
-    "static/css/main.933c93e7.chunk.css.map": "/3d-lut-react/static/css/main.933c93e7.chunk.css.map",
-    "static/js/2.17c41aaa.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.17c41aaa.chunk.js.LICENSE.txt"
+    "main.css": "/3d-lut-react/index.html/static/css/main.933c93e7.chunk.css",
+    "main.js": "/3d-lut-react/index.html/static/js/main.44bdf9b2.chunk.js",
+    "main.js.map": "/3d-lut-react/index.html/static/js/main.44bdf9b2.chunk.js.map",
+    "runtime-main.js": "/3d-lut-react/index.html/static/js/runtime-main.28c982b6.js",
+    "runtime-main.js.map": "/3d-lut-react/index.html/static/js/runtime-main.28c982b6.js.map",
+    "static/js/2.17c41aaa.chunk.js": "/3d-lut-react/index.html/static/js/2.17c41aaa.chunk.js",
+    "static/js/2.17c41aaa.chunk.js.map": "/3d-lut-react/index.html/static/js/2.17c41aaa.chunk.js.map",
+    "index.html": "/3d-lut-react/index.html/index.html",
+    "precache-manifest.fcfe3e592de11056ed68d0c2c5498933.js": "/3d-lut-react/index.html/precache-manifest.fcfe3e592de11056ed68d0c2c5498933.js",
+    "service-worker.js": "/3d-lut-react/index.html/service-worker.js",
+    "static/css/main.933c93e7.chunk.css.map": "/3d-lut-react/index.html/static/css/main.933c93e7.chunk.css.map",
+    "static/js/2.17c41aaa.chunk.js.LICENSE.txt": "/3d-lut-react/index.html/static/js/2.17c41aaa.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.192440b1.js",
+    "static/js/runtime-main.28c982b6.js",
     "static/js/2.17c41aaa.chunk.js",
     "static/css/main.933c93e7.chunk.css",
     "static/js/main.44bdf9b2.chunk.js"
