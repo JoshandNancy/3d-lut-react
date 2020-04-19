@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/3d-lut-react/static/css/main.6d95e692.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.f0407831.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.f0407831.chunk.js.map",
+    "main.css": "/3d-lut-react/static/css/main.02119c9d.chunk.css",
+    "main.js": "/3d-lut-react/static/js/main.125ae557.chunk.js",
+    "main.js.map": "/3d-lut-react/static/js/main.125ae557.chunk.js.map",
     "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
     "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
-    "static/js/2.b3705d21.chunk.js": "/3d-lut-react/static/js/2.b3705d21.chunk.js",
-    "static/js/2.b3705d21.chunk.js.map": "/3d-lut-react/static/js/2.b3705d21.chunk.js.map",
+    "static/css/2.370f3f15.chunk.css": "/3d-lut-react/static/css/2.370f3f15.chunk.css",
+    "static/js/2.35db1acc.chunk.js": "/3d-lut-react/static/js/2.35db1acc.chunk.js",
+    "static/js/2.35db1acc.chunk.js.map": "/3d-lut-react/static/js/2.35db1acc.chunk.js.map",
     "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.bc907e942170fd0c6bfeb29cc671a73b.js": "/3d-lut-react/precache-manifest.bc907e942170fd0c6bfeb29cc671a73b.js",
+    "precache-manifest.2d227d7fdbc36790ea03c3ce374029ef.js": "/3d-lut-react/precache-manifest.2d227d7fdbc36790ea03c3ce374029ef.js",
     "service-worker.js": "/3d-lut-react/service-worker.js",
-    "static/css/main.6d95e692.chunk.css.map": "/3d-lut-react/static/css/main.6d95e692.chunk.css.map",
-    "static/js/2.b3705d21.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.b3705d21.chunk.js.LICENSE.txt",
+    "static/css/2.370f3f15.chunk.css.map": "/3d-lut-react/static/css/2.370f3f15.chunk.css.map",
+    "static/css/main.02119c9d.chunk.css.map": "/3d-lut-react/static/css/main.02119c9d.chunk.css.map",
+    "static/js/2.35db1acc.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.35db1acc.chunk.js.LICENSE.txt",
     "static/media/ALICE.png": "/3d-lut-react/static/media/ALICE.5689351a.png",
     "static/media/BABYBLUE.png": "/3d-lut-react/static/media/BABYBLUE.78fb966a.png",
     "static/media/BREAD.png": "/3d-lut-react/static/media/BREAD.56bd2d49.png",
@@ -58,12 +60,14 @@
     "static/media/NEON-6.png": "/3d-lut-react/static/media/NEON-6.58bad504.png",
     "static/media/OBSESSION.png": "/3d-lut-react/static/media/OBSESSION.8ddd1433.png",
     "static/media/PATAGONIA.png": "/3d-lut-react/static/media/PATAGONIA.f8e2d9a5.png",
-    "static/media/SECRET.png": "/3d-lut-react/static/media/SECRET.5855d56f.png"
+    "static/media/SECRET.png": "/3d-lut-react/static/media/SECRET.5855d56f.png",
+    "static/media/index.css": "/3d-lut-react/static/media/roboto-latin-900italic.ebf6d164.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.192440b1.js",
-    "static/js/2.b3705d21.chunk.js",
-    "static/css/main.6d95e692.chunk.css",
-    "static/js/main.f0407831.chunk.js"
+    "static/css/2.370f3f15.chunk.css",
+    "static/js/2.35db1acc.chunk.js",
+    "static/css/main.02119c9d.chunk.css",
+    "static/js/main.125ae557.chunk.js"
   ]
 }
