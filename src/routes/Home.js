@@ -1,127 +1,218 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
 import Select from "react-select";
 import { connect } from "react-redux";
 import "./Home.css";
 import SampleImages from "../components/SampleImages";
 import LutImages from "../components/LutImages";
 import { selectSrc, selectLut } from "../store";
-import useInput from "../components/useInput";
+import InputRange from "react-input-range";
 
-function mapper(obj) {
+function selectMapper(obj) {
   let rObj = {};
   rObj.value = obj.url;
   rObj.label = obj.name;
   return rObj;
 }
 
-const imgList = SampleImages.map((obj) => mapper(obj));
-const lutList = LutImages.map((obj) => mapper(obj));
+const imgList = SampleImages.map((obj) => selectMapper(obj));
+const lutList = LutImages.map((obj) => selectMapper(obj));
 
-function Home({ imgManagerSt, selectSrcSt, selectLutSt }) {
-  // console.log("lco:", localStorage.getItem("state"));
-  // localStorage.setItem("img", JSON.stringify(imgList));
-  // console.log("imglist local", localStorage.getItem("img"));
-  const range = useInput(0.7);
+// imgMananerSt : 이미지 관리 스테이트 , SrcReducer / LutReducer > 스토어 리듀서로 보내는 연결 함수
+function Home({ imgManagerSt, SrcReducer, LutReducer }) {
+  const errMsgEl = useRef();
+  const resultAreaEl = useRef();
+  const imgSelectEl = useRef();
+  const canvasAreaEl = useRef();
+  const srcCanvasEl = useRef();
+  const resultCanvasEl = useRef();
+  const lutCanvasEl = useRef();
+  const dropboxEl = useRef();
+  const lutboxEl = useRef();
+  const dropmsgEl = useRef();
+  const lutmsgEl = useRef();
 
-  const [lutstate, setLutstate] = useState({
-    lut: "https://i.imgur.com/yKpfItb.jpg",
-  });
-  const [state, setState] = useState({
-    src: "https://i.imgur.com/BlUVaOM.jpg",
-  });
+  const [opacity, setOpacity] = useState(70); // InputRange Initial Value
+
   console.log("imgManagerSt: ", imgManagerSt);
-  console.log("imgManagertype: ", typeof imgManagerSt);
+  console.log("imgManagerSt.src: ", imgManagerSt.src);
+  console.log("imgManagerSt.lut: ", imgManagerSt.lut);
 
-  const source = {
-    src: "https://i.imgur.com/BlUVaOM.jpg",
-    lut: "https://i.imgur.com/yKpfItb.jpg",
-  };
+  // const source = {
+  //   src: "https://i.imgur.com/BlUVaOM.jpg",
+  //   lut: "https://i.imgur.com/yKpfItb.jpg",
+  // };
   const onChange = (event) => {
-    selectSrcSt(event);
+    console.log("event: ", event);
+    SrcReducer(event);
   };
   const onLutChange = (event) => {
-    selectLutSt(event);
-
-    console.log("imgManagerSt: ", imgManagerSt);
-    //state.lut = state.lut;
+    LutReducer(event);
   };
-  var lutOpacity = 0.7;
-  var lutName = "default";
 
-  var sourceImage = document.createElement("img");
-  var lutImage = document.createElement("img");
+  let lutName = "default";
 
-  var imageDataWrapper = null;
-  var imageData = null;
-  var imageDataWrapper3 = null;
-  var imageData3 = null;
+  let sourceImage = document.createElement("img");
+  let lutImage = document.createElement("img");
 
-  var c = document.createElement("canvas");
-  var ctx = c.getContext("2d");
-  document.body.appendChild(c);
+  let imageDataWrapper = null;
+  let imageData = null;
+  let imageDataWrapper3 = null;
+  let imageData3 = null;
 
-  var c2 = document.createElement("canvas");
-  var ctx2 = c2.getContext("2d");
-  document.body.appendChild(c2);
+  // 캔버스 초기화
+  let c = null;
+  let ctx = null;
+  let c2 = null;
+  let ctx2 = null;
+  let lutCanvas = null;
+  let lutCanvasContext = null;
 
-  var lutCanvas = document.createElement("canvas");
-  lutCanvas.id = "lut_vas";
-  var lutCanvasContext = lutCanvas.getContext("2d");
-  document.body.appendChild(lutCanvas);
+  // 파일 드롭 영역 초기화
+  let dropbox = null;
+  let dropmsg = null;
+  let lutbox = null;
+  let lutmsg = null;
+
+  let resultArea = null;
+  let errMSG = null;
+
+  useEffect(() => {
+    c = srcCanvasEl.current;
+    if (c) {
+      ctx = c.getContext("2d");
+    }
+    c2 = resultCanvasEl.current;
+    if (c2) {
+      ctx2 = c2.getContext("2d");
+    }
+    lutCanvas = lutCanvasEl.current;
+    if (lutCanvas) {
+      lutCanvasContext = lutCanvas.getContext("2d");
+    }
+    errMSG = errMsgEl.current;
+    errMSG.style.backgroundColor = "#006B54";
+    errMSG.style.color = "white";
+
+    dropbox = dropboxEl.current;
+    dropbox.addEventListener("dragenter", dragenter, false);
+    dropbox.addEventListener("dragover", dragover, false);
+    dropbox.addEventListener("drop", drop, false);
+
+    dropmsg = dropmsgEl.current;
+
+    lutbox = lutboxEl.current;
+    lutbox.addEventListener("dragenter", dragenter, false);
+    lutbox.addEventListener("dragover", dragover, false);
+    lutbox.addEventListener("drop", lutdrop, false);
+
+    lutmsg = lutmsgEl.current;
+
+    resultArea = resultAreaEl.current;
+  });
+
+  function dragenter(e) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
+
+  function dragover(e) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  function drop(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    console.log(files);
+    handleFiles(files);
+  }
+
+  function lutdrop(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    console.log(files);
+    handleLutFiles(files);
+  }
+
+  function handleFiles(files) {
+    console.log("handleFiles");
+    const blobUrl = window.URL.createObjectURL(files[0]);
+    console.log("filename:", files[0].name);
+    var filename = files[0].name;
+    dropmsg.innerText = filename;
+    const dropFile = {
+      value: blobUrl,
+      label: filename,
+    };
+
+    SrcReducer(dropFile);
+  }
+  function handleLutFiles(files) {
+    const blobUrl = window.URL.createObjectURL(files[0]);
+    console.log("filename:", files[0].name);
+    var filename = files[0].name;
+    lutmsg.innerText = filename;
+    const dropFile = {
+      value: blobUrl,
+      label: filename,
+    };
+    lutName = filename;
+
+    LutReducer(dropFile);
+  }
 
   function openLut() {
-    lutImage.src = lutstate.lut; //LUT URL
+    lutImage.src = imgManagerSt.lut; //LUT URL
     lutImage.crossOrigin = "Anonymous";
-    console.log("source lut", lutImage.src);
 
     console.log("LUT loaded!");
     lutImage.onload = openSource();
     lutImage.onerror = () => {
-      errMsgEl.current.innerText = "Error occured loading LUT";
-      errMsgEl.current.style.backgroundColor = "red";
+      errMSG.innerText = "Error occured loading LUT";
+      errMSG.style.backgroundColor = "red";
     };
   }
 
   function openSource() {
     sourceImage.onload = processImage;
     sourceImage.onerror = () => {
-      errMsgEl.current.innerText = "Error occured loading image";
-      errMsgEl.current.style.backgroundColor = "red";
+      errMSG.innerText = "Error occured loading image";
+      errMSG.style.backgroundColor = "red";
     };
-    sourceImage.src = state.src; // IMAGE URL
-    console.log("state:", state);
-    console.log("sourceImage.src", sourceImage.src);
+    sourceImage.src = imgManagerSt.src; // IMAGE URL
+
     sourceImage.crossOrigin = "Anonymous";
 
     console.log("Source loaded!");
   }
 
-  const errMsgEl = useRef();
-  //const errMSG = errMsgEl.current;
-
-  const resultAreaEl = useRef();
-  //const resultArea = resultAreaEl.current;
-
-  const imgSelectEl = useRef();
-
   function processImage() {
     c.width = c2.width = sourceImage.width;
     c.height = c2.height = sourceImage.height;
-    // ctx2.clearRect(0, 0, c2.width, c2.height);
-    // console.log("canvas 2 Cleared!");
 
     lutCanvas.width = lutImage.width;
     lutCanvas.height = lutImage.height;
     if (lutCanvas.width === 0) {
       console.log("lut loading error");
-      errMsgEl.current.innerText = "LUT is not loaded! Try again!";
-      errMsgEl.current.style.backgroundColor = "red";
+      errMSG.innerText = "LUT is not loaded! Try again!";
+      errMSG.style.backgroundColor = "red";
       return;
     }
 
     ctx.drawImage(sourceImage, 0, 0);
-
-    imageDataWrapper = ctx.getImageData(0, 0, c.width, c.height);
+    try {
+      imageDataWrapper = ctx.getImageData(0, 0, c.width, c.height);
+    } catch (err) {
+      console.log(err);
+      errMSG.innerText = err;
+      errMSG.style.backgroundColor = "red";
+    }
     imageData = imageDataWrapper.data;
     console.log(imageData.length / 4);
 
@@ -136,12 +227,12 @@ function Home({ imgManagerSt, selectSrcSt, selectLutSt }) {
       );
     } catch (err) {
       console.log(err);
-      errMsgEl.current.innerText = err;
-      errMsgEl.current.style.backgroundColor = "red";
+      errMSG.innerText = err;
+      errMSG.style.backgroundColor = "red";
     }
 
     imageData3 = imageDataWrapper3.data;
-
+    let lutOpacity = opacity / 100;
     console.log(lutOpacity);
 
     for (var i = 0; i < imageData.length; i += 4) {
@@ -161,17 +252,13 @@ function Home({ imgManagerSt, selectSrcSt, selectLutSt }) {
       imageData[i + 2] =
         imageData3[lutIndex + 2] * lutOpacity +
         imageData[i + 2] * (1 - lutOpacity);
-
-      // imageData[i] = imageData3[lutIndex];
-      // imageData[i + 1] = imageData3[lutIndex + 1];
-      // imageData[i + 2] = imageData3[lutIndex + 2];
     }
     //complete and refresh UI
     ctx2.putImageData(imageDataWrapper, 0, 0);
     console.log("processing Done!");
-    errMsgEl.current.innerText = "Processing Completed!";
-    errMsgEl.current.style.backgroundColor = "grey";
-    //canvasResizer();
+    errMSG.innerText = "Processing Completed!";
+    errMSG.style.backgroundColor = "grey";
+    canvasResizer();
     var originalImg = new Image();
     var resultImg = new Image();
     originalImg = convertCanvasToImage(c);
@@ -179,19 +266,36 @@ function Home({ imgManagerSt, selectSrcSt, selectLutSt }) {
     originalImg.style.width = "50%";
     resultImg.style.width = "50%";
 
-    var lutTitle = document.createTextNode(lutName.concat(" : ", lutOpacity));
+    var lutTitle = document.createTextNode(lutName.concat(" : ", opacity, "%"));
     var lutBtn = document.createElement("button");
     var divEl = document.createElement("div");
     lutBtn.appendChild(lutTitle);
 
-    resultAreaEl.current.appendChild(lutBtn);
-    resultAreaEl.current.appendChild(divEl);
-    resultAreaEl.current.appendChild(originalImg);
-    resultAreaEl.current.appendChild(resultImg);
+    resultArea.appendChild(lutBtn);
+    resultArea.appendChild(divEl);
+    resultArea.appendChild(originalImg);
+    resultArea.appendChild(resultImg);
   }
-  //   useEffect(() => {
-  //     console.log(imgSelectEl.current.onChange);
-  //   });
+
+  function onUndo() {
+    if (resultArea.lastChild) {
+      resultArea.removeChild(resultArea.lastChild);
+      resultArea.removeChild(resultArea.lastChild);
+      resultArea.removeChild(resultArea.lastChild);
+      resultArea.removeChild(resultArea.lastChild);
+    } else {
+      console.log("Nothing to Undo");
+      errMSG.innerText = "Nothing to Undo.";
+      errMSG.style.backgroundColor = "orange";
+    }
+  }
+
+  function canvasResizer() {
+    console.log("resized!");
+    c.style.width = c2.style.width = "50%";
+    //c.style.height = c2.style.height = "600px";
+    console.log(c.style.width);
+  }
 
   function convertCanvasToImage(canvas) {
     var image = new Image();
@@ -199,49 +303,74 @@ function Home({ imgManagerSt, selectSrcSt, selectLutSt }) {
     return image;
   }
 
-  //   function createDOMRef() {
-  //     console.log(errMsgEl, resultAreaEl);
-  //   }
-
   function onClick(event) {
     errMsgEl.current.innerText = "Processing...";
     errMsgEl.current.style.backgroundColor = "#006B54";
-    //console.log(event);
-    openLut(source);
+
+    openLut();
   }
 
   return (
     <>
       <div className="title">3D LUT React App</div>
-      <div>
-        <label htmlFor="imgs">Choose a Sample</label>
+      <div className="selector selector--src">
+        <label className="label label--selector" htmlFor="imgs">
+          Choose a Sample
+        </label>
         <Select
           options={imgList}
           ref={imgSelectEl}
           onChange={onChange}
-          name="imgs"
+          id="imgs"
         />
-        <label htmlFor="luts">Choose a LUT</label>
-        <Select options={lutList} name="luts" onChange={onLutChange} />
       </div>
-
+      <div className="selector selector--lut">
+        <label className="label label--selector" htmlFor="luts">
+          Choose a LUT
+        </label>
+        <Select options={lutList} id="luts" onChange={onLutChange} />
+      </div>
+      <div id="dropbox" ref={dropboxEl}>
+        <h2>
+          <div id="dropmsg" ref={dropmsgEl}>
+            Drag and Drop Image File HERE! <br />*<br />*<br />*<br />*<br />
+            Image DropZone
+            <br />
+          </div>
+        </h2>
+      </div>
+      <div id="lutbox" ref={lutboxEl}>
+        <h2>
+          <div id="lutmsg" ref={lutmsgEl}>
+            Drag and Drop LUT File HERE! <br />*<br />*<br />*<br />*<br />
+            LUT DropZone
+            <br />
+          </div>
+        </h2>
+      </div>
+      <form className="form">
+        <label>[ LUT Opacity ]</label>
+        <InputRange
+          formatLabel={(opacity) => `${opacity} %`}
+          minValue={0}
+          maxValue={100}
+          step={5}
+          value={opacity}
+          onChange={(opacity) => {
+            setOpacity(opacity);
+          }}
+        />
+      </form>
       <div ref={errMsgEl} id="errMSG">
         Ready...
       </div>
-      <div class="controls__range">
-        Opacity :
-        <input
-          type="range"
-          id="jsRange"
-          min="0.0"
-          max="1.0"
-          value="0.7"
-          step="0.1"
-        />
-        <input placeholder="Name" {...range} />
-        <span id="rangeText">0.7</span>
+      <button onClick={onClick}>Apply LUT</button>{" "}
+      <button onClick={onUndo}>Undo</button>
+      <div ref={canvasAreaEl} id="canvasArea" className="canvas fixedcanvas">
+        <canvas ref={srcCanvasEl} id="srcCanvas" />
+        <canvas ref={resultCanvasEl} id="resultCanvas" />
+        <canvas ref={lutCanvasEl} id="lutCanvas" />
       </div>
-      <button onClick={onClick}>Apply LUT</button>
       <div ref={resultAreaEl} id="resultArea" />
     </>
   );
@@ -254,8 +383,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    selectSrcSt: (value) => dispatch(selectSrc(value, ownProps)),
-    selectLutSt: (value) => dispatch(selectLut(value, ownProps)),
+    SrcReducer: (value) => dispatch(selectSrc(value, ownProps)),
+    LutReducer: (value) => dispatch(selectLut(value, ownProps)),
   };
 }
 

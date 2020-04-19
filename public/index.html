@@ -28,73 +28,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div><h1>[3D LUT TEST APP]</h1></div>
-    <div>
-      <label for="imgs">Choose a Sample</label>
 
-      <select name="sample" id="img-select">
-        <option value="">--Please choose an option--</option>
-
-        <option value="day1">Day 1</option>
-        <option value="night1">Night 1</option>
-      </select>
-
-      <label for="luts">Choose a LUT</label>
-
-      <select name="pets" id="lut-select">
-        <option value="">--Please choose an option--</option>
-
-        <option value="joyful1">JOYFUL-1</option>
-        <option value="joyful2">JOYFUL-2</option>
-        <option value="joyful3">JOYFUL-3</option>
-        <option value="joyful4">JOYFUL-4</option>
-        <option value="joyful5">JOYFUL-5</option>
-        <option value="metro1">METRO-1</option>
-        <option value="metro2">METRO-2</option>
-        <option value="neon1">NEON-1</option>
-        <option value="neon2">NEON-2</option>
-        <option value="neon3">NEON-3</option>
-        <option value="neon4">NEON-4</option>
-        <option value="neon5">NEON-5</option>
-        <option value="neon6">NEON-6</option>
-      </select>
-    </div>
-    <div id="dropbox">
-      <h2>
-        <div id="dropmsg">
-          Drag and Drop Image File HERE! <br />*<br />*<br />*<br />*<br />Image
-          DropZone<br />
-        </div>
-      </h2>
-    </div>
-
-    <div id="lutbox">
-      <h2>
-        <div id="lutmsg">
-          Drag and Drop LUT File HERE! <br />*<br />*<br />*<br />*<br />LUT
-          DropZone<br />
-        </div>
-      </h2>
-    </div>
-    <div class="controls__range">
-      Opacity :
-      <input
-        type="range"
-        id="jsRange"
-        min="0.0"
-        max="1.0"
-        value="0.7"
-        step="0.1"
-      /><span id="rangeText">0.7</span>
-    </div>
-
-    <div id="jsError">Ready...</div>
-    <div>
-      <button id="lutApply">Apply LUT</button>
-      <button id="lutUndo">Undo</button>
-    </div>
-    <div id="jsCanvas"></div>
-    <div id="jsResult"></div>
     <div id="root"></div>
     <!--
       This HTML file is a template.

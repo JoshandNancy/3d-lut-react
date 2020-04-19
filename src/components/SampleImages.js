@@ -1,5 +1,5 @@
 const SampleImages = [
-  { id: 1, name: "day1", url: "https://i.imgur.com/O69N3Ef.jpg" },
+  { id: 1, name: "color chart", url: "https://i.imgur.com/BlUVaOM.jpg" },
   {
     id: 2,
     name: "day2",
