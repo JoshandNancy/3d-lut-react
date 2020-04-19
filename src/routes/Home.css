@@ -1,10 +1,103 @@
-#lutCanvas {
+.workCanvas {
   display: none;
+}
+/*
+ * Control layouts
+ */
+
+.controls-stacked {
+  margin: 1rem 0;
+}
+.controls-stacked .control,
+.controls-stacked .progress {
+  display: block;
+}
+.controls-stacked .control + .control,
+.controls-stacked .progress + .progress {
+  margin-top: 0.5rem;
+}
+
+.controls-inline {
+  margin: 1rem 0;
+}
+.controls-inline .control {
+  display: inline-block;
+  height: 1rem;
+}
+.controls-inline .control + .control {
+  margin-left: 1rem;
+}
+
+/*
+ * File
+ */
+
+.file {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  height: 2.5rem;
+}
+.file input {
+  min-width: 15rem;
+  margin: 0;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.file-custom {
+  position: absolute;
+  top: 0;
+  right: -1rem;
+  left: 2rem;
+  z-index: 5;
+  height: 1.25rem;
+  padding: 0.5rem 1rem;
+  line-height: 1.5;
+  color: #555;
+  background-color: #fff;
+  border: 0.075rem solid #ddd;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.file-source:after {
+  content: "Upload a photo";
+}
+.file-lut:after {
+  content: "Upload a LUT";
+}
+.file-custom:before {
+  position: absolute;
+  top: -0.075rem;
+  left: 8.5rem;
+  right: -0.075rem;
+  bottom: -0.075rem;
+  z-index: 6;
+  display: block;
+  content: "Browse";
+  height: 1.25rem;
+  padding: 0.5rem 1rem;
+  line-height: 1.5;
+  color: #555;
+  background-color: #eee;
+  border: 0.075rem solid #ddd;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+/* Focus */
+.file input:focus ~ .file-custom {
+  box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #0074d9;
 }
 
 .label--selector {
-  background-color: black;
-  color: #f0f0f0;
+  background-color: #f0f0f0;
+  color: #0f0f0f;
+  font-weight: 600;
+  font-size: normal;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .selector {
@@ -21,6 +114,87 @@
   padding-bottom: 10px;
 }
 
+body {
+  margin: 3%;
+}
+
+.btn1 {
+  border: 3px solid beige;
+  border-radius: 10px;
+  color: whitesmoke;
+  background-color: teal;
+  padding: 0.3em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.btn1:hover {
+  background-color: #fa7268;
+}
+.btn1:active {
+  background-color: grey;
+  color: black;
+}
+
+.btn {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 5px 20px;
+  display: inline-block;
+  margin: auto;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn-2 {
+  background: #cb4e4e;
+  color: #fff;
+  box-shadow: 0 6px #ab3c3c;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  margin-bottom: 0.9em;
+}
+
+/* Button 2d */
+.btn-2d {
+  border-radius: 5px;
+}
+
+.btn-2d:hover {
+  box-shadow: 0 8px #ab3c3c;
+  top: -2px;
+}
+
+.btn-2d:active {
+  box-shadow: 0 0 #ab3c3c;
+  top: 6px;
+}
+
+/* Button 2g */
+.btn-2g {
+  border-radius: 40px;
+}
+
+.btn-2g:hover {
+  box-shadow: 0 4px #ab3c3c;
+  top: 2px;
+}
+
+.btn-2g:active {
+  box-shadow: 0 0 #ab3c3c;
+  top: 6px;
+}
+
 h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
@@ -28,16 +202,33 @@ h1 {
 }
 
 h2 {
-  font-size: x-large;
-  font-style: oblique;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: initial;
+
+  vertical-align: middle;
+  text-align: center;
+  font-weight: 500;
+}
+
+h5 {
+  font-weight: 400;
+  font-family: "Courier New", Courier, monospace;
+  font-style: normal;
+}
+
+#errMSG {
+  text-align: center;
+  font-size: large;
 }
 
 #dropmsg {
-  color: #0f0f0f;
+  padding-top: 1em;
+  color: #2f2f2f;
 }
 
 #lutmsg {
-  color: white;
+  color: #e0e0e0;
+  padding-top: 1em;
 }
 
 #jsError {
@@ -48,21 +239,23 @@ h2 {
 }
 
 #dropbox {
-  border: 1px solid#0F0F0F;
-  display: flex;
+  border: 1px solid whitesmoke;
+
   width: 50%;
   float: left;
   background-color: #fa7268;
-  padding: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #lutbox {
-  border: 1px solid #0f0f0f;
-  display: flex;
+  border: 1px solid whitesmoke;
+
   width: 50%;
   inline-size: auto;
   background-color: #004680;
-  padding: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .title {
@@ -71,10 +264,16 @@ h2 {
 }
 
 .form {
-  width: 50%;
+  width: 300;
   margin: auto;
+  vertical-align: middle;
+  padding: 30px;
+  padding-top: 80px;
+}
+
+.controlBtnArea {
+  text-align: center;
   padding: 10px;
-  padding-bottom: 25px;
 }
 
 .input-range__slider {

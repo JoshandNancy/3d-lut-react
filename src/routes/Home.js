@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import Select from "react-select";
 import { connect } from "react-redux";
 import "./Home.css";
@@ -7,6 +6,21 @@ import SampleImages from "../components/SampleImages";
 import LutImages from "../components/LutImages";
 import { selectSrc, selectLut } from "../store";
 import InputRange from "react-input-range";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
+const useStyles = makeStyles({
+  root: {
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    border: 0,
+    borderRadius: 3,
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    color: "white",
+    width: 300,
+    height: 45,
+    padding: "0 30px",
+  },
+});
 
 function selectMapper(obj) {
   let rObj = {};
@@ -31,8 +45,14 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
   const lutboxEl = useRef();
   const dropmsgEl = useRef();
   const lutmsgEl = useRef();
+  const imgInputEl = useRef();
+  const lutInputEl = useRef();
 
   const [opacity, setOpacity] = useState(70); // InputRange Initial Value
+  //const [srclist, setSrclist] = useState(null); // source image input and save to imgManagerSt
+  //const [lutlist, setLutlist] = useState(null); // lut image input and save to imgManagerSt
+
+  const classes = useStyles();
 
   console.log("imgManagerSt: ", imgManagerSt);
   console.log("imgManagerSt.src: ", imgManagerSt.src);
@@ -44,13 +64,13 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
   // };
   const onChange = (event) => {
     console.log("event: ", event);
+    dropmsg.innerText = event.label;
     SrcReducer(event);
   };
   const onLutChange = (event) => {
+    lutmsg.innerText = event.label;
     LutReducer(event);
   };
-
-  let lutName = "default";
 
   let sourceImage = document.createElement("img");
   let lutImage = document.createElement("img");
@@ -76,6 +96,9 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
 
   let resultArea = null;
   let errMSG = null;
+
+  let imgInput = null;
+  let lutInput = null;
 
   useEffect(() => {
     c = srcCanvasEl.current;
@@ -109,7 +132,23 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
     lutmsg = lutmsgEl.current;
 
     resultArea = resultAreaEl.current;
+
+    // 파일 업로드 처리
+    imgInput = imgInputEl.current;
+    lutInput = lutInputEl.current;
+    imgInput.addEventListener("change", uploadFile, false);
+    lutInput.addEventListener("change", uploadLut, false);
   });
+
+  function uploadFile(e) {
+    const files = e.srcElement.files;
+    handleFiles(files);
+  }
+
+  function uploadLut(e) {
+    const files = e.srcElement.files;
+    handleLutFiles(files);
+  }
 
   function dragenter(e) {
     e.stopPropagation();
@@ -123,29 +162,28 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
   function drop(e) {
     e.stopPropagation();
     e.preventDefault();
-
     const dt = e.dataTransfer;
     const files = dt.files;
-    console.log(files);
     handleFiles(files);
   }
 
   function lutdrop(e) {
     e.stopPropagation();
     e.preventDefault();
-
     const dt = e.dataTransfer;
     const files = dt.files;
-    console.log(files);
     handleLutFiles(files);
   }
 
   function handleFiles(files) {
-    console.log("handleFiles");
+    //console.log("handleFiles");
     const blobUrl = window.URL.createObjectURL(files[0]);
-    console.log("filename:", files[0].name);
+    //console.log("filename:", files[0].name);
     var filename = files[0].name;
     dropmsg.innerText = filename;
+
+    localStorage.setItem("srclist", files[0]);
+    console.log("saved file :", localStorage.getItem("srclist"));
     const dropFile = {
       value: blobUrl,
       label: filename,
@@ -162,7 +200,6 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
       value: blobUrl,
       label: filename,
     };
-    lutName = filename;
 
     LutReducer(dropFile);
   }
@@ -170,8 +207,6 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
   function openLut() {
     lutImage.src = imgManagerSt.lut; //LUT URL
     lutImage.crossOrigin = "Anonymous";
-
-    console.log("LUT loaded!");
     lutImage.onload = openSource();
     lutImage.onerror = () => {
       errMSG.innerText = "Error occured loading LUT";
@@ -186,10 +221,7 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
       errMSG.style.backgroundColor = "red";
     };
     sourceImage.src = imgManagerSt.src; // IMAGE URL
-
     sourceImage.crossOrigin = "Anonymous";
-
-    console.log("Source loaded!");
   }
 
   function processImage() {
@@ -199,7 +231,6 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
     lutCanvas.width = lutImage.width;
     lutCanvas.height = lutImage.height;
     if (lutCanvas.width === 0) {
-      console.log("lut loading error");
       errMSG.innerText = "LUT is not loaded! Try again!";
       errMSG.style.backgroundColor = "red";
       return;
@@ -214,10 +245,8 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
       errMSG.style.backgroundColor = "red";
     }
     imageData = imageDataWrapper.data;
-    console.log(imageData.length / 4);
 
     lutCanvasContext.drawImage(lutImage, 0, 0);
-    // this error occurs wrong result!!
     try {
       imageDataWrapper3 = lutCanvasContext.getImageData(
         0,
@@ -233,7 +262,7 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
 
     imageData3 = imageDataWrapper3.data;
     let lutOpacity = opacity / 100;
-    console.log(lutOpacity);
+    //console.log(lutOpacity);
 
     for (var i = 0; i < imageData.length; i += 4) {
       //console.log("rendering...");
@@ -255,46 +284,76 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
     }
     //complete and refresh UI
     ctx2.putImageData(imageDataWrapper, 0, 0);
-    console.log("processing Done!");
+    //console.log("processing Done!");
     errMSG.innerText = "Processing Completed!";
     errMSG.style.backgroundColor = "grey";
     canvasResizer();
-    var originalImg = new Image();
-    var resultImg = new Image();
+
+    // 결과물 출력 단계 (id 추가, 삭제하는 방법 고려)
+    let originalImg = new Image();
+    let resultImg = new Image();
     originalImg = convertCanvasToImage(c);
     resultImg = convertCanvasToImage(c2);
     originalImg.style.width = "50%";
     resultImg.style.width = "50%";
 
-    var lutTitle = document.createTextNode(lutName.concat(" : ", opacity, "%"));
-    var lutBtn = document.createElement("button");
-    var divEl = document.createElement("div");
-    lutBtn.appendChild(lutTitle);
+    let lutTitle = document.createTextNode(
+      imgManagerSt.srcname.concat(
+        " / LUT : ",
+        imgManagerSt.lutname,
+        " (",
+        opacity,
+        "%",
+        ") ",
+        " >>> ❌[DEL]"
+      )
+    );
+    let resultBox = document.createElement("div");
+    let divEl = document.createElement("div");
+    let lutBtn = document.createElement("button");
 
-    resultArea.appendChild(lutBtn);
-    resultArea.appendChild(divEl);
-    resultArea.appendChild(originalImg);
-    resultArea.appendChild(resultImg);
+    let resultId = Date.now();
+    resultBox.id = resultId;
+    lutBtn.id = resultId;
+
+    lutBtn.appendChild(lutTitle);
+    //console.log("firstChild", resultArea.firstChild);
+    let firstResult = resultArea.firstChild;
+
+    if (firstResult !== null) {
+      resultArea.insertBefore(resultBox, resultArea.firstChild);
+      //console.log("Inserted!");
+    } else {
+      resultArea.appendChild(resultBox);
+    }
+
+    //    resultArea.appendChild(resultBox);
+    resultBox.appendChild(lutBtn);
+
+    resultBox.appendChild(divEl);
+    resultBox.appendChild(originalImg);
+    resultBox.appendChild(resultImg);
+
+    lutBtn.addEventListener("click", removeResult);
+    lutBtn.className = "btn btn-2 btn-2d";
+
+    //console.log("createad butn", lutBtn);
   }
 
-  function onUndo() {
-    if (resultArea.lastChild) {
-      resultArea.removeChild(resultArea.lastChild);
-      resultArea.removeChild(resultArea.lastChild);
-      resultArea.removeChild(resultArea.lastChild);
-      resultArea.removeChild(resultArea.lastChild);
-    } else {
-      console.log("Nothing to Undo");
-      errMSG.innerText = "Nothing to Undo.";
-      errMSG.style.backgroundColor = "orange";
-    }
+  function removeResult(e) {
+    //console.log("click!");
+    let targetId = e.target.id;
+    let targetEl = document.getElementById(targetId);
+    //console.log(e.target.id);
+
+    targetEl.parentNode.removeChild(targetEl);
   }
 
   function canvasResizer() {
-    console.log("resized!");
+    //console.log("resized!");
     c.style.width = c2.style.width = "50%";
     //c.style.height = c2.style.height = "600px";
-    console.log(c.style.width);
+    //console.log(c.style.width);
   }
 
   function convertCanvasToImage(canvas) {
@@ -313,9 +372,47 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
   return (
     <>
       <div className="title">3D LUT React App</div>
+      <div id="dropbox" ref={dropboxEl}>
+        <h2>
+          <div id="dropmsg" ref={dropmsgEl}>
+            🏞 Drag and drop / or upload a photo.
+          </div>
+        </h2>
+        <form className="controls-stacked">
+          <label className="file">
+            <input
+              ref={imgInputEl}
+              id="file"
+              name="imgInput"
+              type="file"
+              accept="image/png, image/jpeg"
+            />
+            <span className="file-custom file-source"></span>
+          </label>
+        </form>
+      </div>
+      <div id="lutbox" ref={lutboxEl}>
+        <h2>
+          <div id="lutmsg" ref={lutmsgEl}>
+            🎨 Drag and drop / or upload a LUT file.
+          </div>
+        </h2>
+        <form className="controls-stacked">
+          <label className="file">
+            <input
+              ref={lutInputEl}
+              id="file"
+              name="lutinput"
+              type="file"
+              accept="image/png, image/jpeg"
+            />
+            <span className="file-custom file-lut"></span>
+          </label>
+        </form>
+      </div>
       <div className="selector selector--src">
         <label className="label label--selector" htmlFor="imgs">
-          Choose a Sample
+          🏞Select a sample image
         </label>
         <Select
           options={imgList}
@@ -326,27 +423,9 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
       </div>
       <div className="selector selector--lut">
         <label className="label label--selector" htmlFor="luts">
-          Choose a LUT
+          🎨Select a LUT file
         </label>
         <Select options={lutList} id="luts" onChange={onLutChange} />
-      </div>
-      <div id="dropbox" ref={dropboxEl}>
-        <h2>
-          <div id="dropmsg" ref={dropmsgEl}>
-            Drag and Drop Image File HERE! <br />*<br />*<br />*<br />*<br />
-            Image DropZone
-            <br />
-          </div>
-        </h2>
-      </div>
-      <div id="lutbox" ref={lutboxEl}>
-        <h2>
-          <div id="lutmsg" ref={lutmsgEl}>
-            Drag and Drop LUT File HERE! <br />*<br />*<br />*<br />*<br />
-            LUT DropZone
-            <br />
-          </div>
-        </h2>
       </div>
       <form className="form">
         <label>[ LUT Opacity ]</label>
@@ -364,12 +443,19 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
       <div ref={errMsgEl} id="errMSG">
         Ready...
       </div>
-      <button onClick={onClick}>Apply LUT</button>{" "}
-      <button onClick={onUndo}>Undo</button>
+      <div className="controlBtnArea">
+        {/* <button className="btn btn-2 btn-2d" onClick={onClick}>
+          APPLY LUT{" "}
+        </button> */}
+        <br></br>
+        <Button className={classes.root} onClick={onClick}>
+          Apply LUT
+        </Button>
+      </div>
       <div ref={canvasAreaEl} id="canvasArea" className="canvas fixedcanvas">
-        <canvas ref={srcCanvasEl} id="srcCanvas" />
-        <canvas ref={resultCanvasEl} id="resultCanvas" />
-        <canvas ref={lutCanvasEl} id="lutCanvas" />
+        <canvas ref={srcCanvasEl} id="srcCanvas" className="workCanvas" />
+        <canvas ref={resultCanvasEl} id="resultCanvas" className="workCanvas" />
+        <canvas ref={lutCanvasEl} id="lutCanvas" className="workCanvas" />
       </div>
       <div ref={resultAreaEl} id="resultArea" />
     </>

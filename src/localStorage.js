@@ -1,6 +1,7 @@
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem("state");
+    //const fileStorage = localStorage.getItem("srclist");
     console.log("firstload: ", serializedState);
     if (serializedState === null) {
       return {

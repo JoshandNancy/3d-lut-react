@@ -4,6 +4,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store";
 import { saveState } from "./localStorage";
+import "typeface-roboto";
 
 store.subscribe(() => {
   saveState(store.getState());
