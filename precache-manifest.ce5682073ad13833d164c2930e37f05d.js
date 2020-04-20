@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "afd88a0a1e70bd4b9fc8f98a3ea3c990",
+    "revision": "89aee3445a5216c0d8406511b16f78cb",
     "url": "/3d-lut-react/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/3d-lut-react/static/css/2.370f3f15.chunk.css"
   },
   {
-    "revision": "e43bf5fd6b02db7b061a",
-    "url": "/3d-lut-react/static/css/main.dadf96c4.chunk.css"
+    "revision": "e950ccbc97666d349ce5",
+    "url": "/3d-lut-react/static/css/main.7f11e5f7.chunk.css"
   },
   {
     "revision": "31bc8131f6ce8a13f2b6",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/3d-lut-react/static/js/2.f876960e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e43bf5fd6b02db7b061a",
+    "revision": "e950ccbc97666d349ce5",
     "url": "/3d-lut-react/static/js/main.1a515c55.chunk.js"
   },
   {
