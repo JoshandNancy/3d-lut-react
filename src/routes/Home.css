@@ -1,6 +1,7 @@
 .workCanvas {
   display: none;
 }
+
 /*
  * Control layouts
  */
@@ -34,29 +35,30 @@
 
 .file {
   position: relative;
-  display: inline-block;
+  display: flex;
   cursor: pointer;
   height: 2.5rem;
 }
 .file input {
-  min-width: 15rem;
+  min-width: 12rem;
   margin: 0;
   filter: alpha(opacity=0);
   opacity: 0;
 }
 .file-custom {
+  /*흰색 영역*/
   position: absolute;
   top: 0;
-  right: -1rem;
-  left: 2rem;
+  right: 0.5rem;
+  left: 0.5rem; /* 버튼 간격 */
   z-index: 5;
   height: 1.25rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.59rem; /*글자 패딩*/
   line-height: 1.5;
   color: #555;
   background-color: #fff;
   border: 0.075rem solid #ddd;
-  border-radius: 0.25rem;
+  border-radius: 0.5em;
   box-shadow: inset 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -65,26 +67,31 @@
 }
 .file-source:after {
   content: "Upload a photo";
+  font-size: small;
+  padding-bottom: 0.3em;
 }
 .file-lut:after {
   content: "Upload a LUT";
+  font-size: small;
 }
 .file-custom:before {
+  /*Browsw 영역*/
   position: absolute;
   top: -0.075rem;
-  left: 8.5rem;
+  left: 6.5rem;
   right: -0.075rem;
   bottom: -0.075rem;
   z-index: 6;
   display: block;
   content: "Browse";
   height: 1.25rem;
-  padding: 0.5rem 1rem;
-  line-height: 1.5;
+  padding: 0.5rem 0.7rem; /*글자 패딩*/
+  line-height: 1.9;
   color: #555;
   background-color: #eee;
   border: 0.075rem solid #ddd;
-  border-radius: 0 0.25rem 0.25rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: small;
 }
 
 /* Focus */
@@ -93,7 +100,6 @@
 }
 
 .label--selector {
-  background-color: #f0f0f0;
   color: #0f0f0f;
   font-weight: 600;
   font-size: normal;
@@ -217,8 +223,13 @@ h5 {
 }
 
 #errMSG {
+  margin: auto;
+  display: flexbox;
   text-align: center;
   font-size: large;
+  max-width: 82%;
+  border-radius: 8px;
+  padding: 3px;
 }
 
 #dropmsg {
@@ -264,22 +275,29 @@ h5 {
 }
 
 .form {
-  width: 300;
+  width: 83%;
   margin: auto;
   vertical-align: middle;
   padding: 30px;
   padding-top: 80px;
+  font-size: small;
+  color: #3f3f3f;
 }
 
 .controlBtnArea {
   text-align: center;
   padding: 10px;
+  padding-bottom: 35px;
 }
 
 .input-range__slider {
   appearance: none;
-  background: teal; /*슬라이더 버튼 색상*/
-  border: 1px solid bisque; /*슬라이더 버튼 외곽선*/
+  background: linear-gradient(
+    90deg,
+    #fe6b8b 30%,
+    #ff8e53 90%
+  ); /*슬라이더 버튼 색상*/
+  border: 1px solid #ff8e53; /*슬라이더 버튼 외곽선*/
   border-radius: 100%;
   cursor: pointer;
   display: block;
@@ -310,7 +328,7 @@ h5 {
 }
 
 .input-range__label {
-  color: teal; /*글자 라벨 색상*/
+  color: #2f2f2f; /*글자 라벨 색상*/
   font-family: "Helvetica Neue", san-serif;
   font-size: 0.8rem;
   transform: translateZ(0);
@@ -370,7 +388,11 @@ h5 {
 }
 
 .input-range__track--active {
-  background: teal; /* 슬라이드 색상 */
+  background: linear-gradient(
+    45deg,
+    #fe6b8b 30%,
+    #ff8e53 90%
+  ); /* 슬라이드 색상 */
   border: 0.5px solid beige;
 }
 

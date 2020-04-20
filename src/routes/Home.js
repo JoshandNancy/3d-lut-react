@@ -13,12 +13,12 @@ const useStyles = makeStyles({
   root: {
     background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
     border: 0,
-    borderRadius: 3,
+    borderRadius: 20,
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     color: "white",
-    width: 300,
+    minWidth: "310px",
     height: 45,
-    padding: "0 30px",
+    padding: "10px",
   },
 });
 
@@ -410,48 +410,53 @@ function Home({ imgManagerSt, SrcReducer, LutReducer }) {
           </label>
         </form>
       </div>
-      <div className="selector selector--src">
-        <label className="label label--selector" htmlFor="imgs">
-          🏞Select a sample image
-        </label>
-        <Select
-          options={imgList}
-          ref={imgSelectEl}
-          onChange={onChange}
-          id="imgs"
-        />
+      <div>
+        <div className="selector selector--src">
+          <label className="label label--selector" htmlFor="imgs">
+            🏞Select a image
+          </label>
+          <Select
+            options={imgList}
+            ref={imgSelectEl}
+            onChange={onChange}
+            id="imgs"
+          />
+        </div>
+        <div className="selector selector--lut">
+          <label className="label label--selector" htmlFor="luts">
+            🎨Select a LUT file
+          </label>
+          <Select options={lutList} id="luts" onChange={onLutChange} />
+        </div>
       </div>
-      <div className="selector selector--lut">
-        <label className="label label--selector" htmlFor="luts">
-          🎨Select a LUT file
-        </label>
-        <Select options={lutList} id="luts" onChange={onLutChange} />
-      </div>
-      <form className="form">
-        <label>[ LUT Opacity ]</label>
-        <InputRange
-          formatLabel={(opacity) => `${opacity} %`}
-          minValue={0}
-          maxValue={100}
-          step={5}
-          value={opacity}
-          onChange={(opacity) => {
-            setOpacity(opacity);
-          }}
-        />
-      </form>
-      <div ref={errMsgEl} id="errMSG">
-        Ready...
+      <div>
+        <form className="form">
+          <label>[ LUT Opacity ]</label>
+          <InputRange
+            formatLabel={(opacity) => `${opacity} %`}
+            minValue={0}
+            maxValue={100}
+            step={5}
+            value={opacity}
+            onChange={(opacity) => {
+              setOpacity(opacity);
+            }}
+          />
+        </form>
       </div>
       <div className="controlBtnArea">
         {/* <button className="btn btn-2 btn-2d" onClick={onClick}>
           APPLY LUT{" "}
         </button> */}
-        <br></br>
+
         <Button className={classes.root} onClick={onClick}>
           Apply LUT
         </Button>
       </div>
+      <div ref={errMsgEl} id="errMSG">
+        Ready...
+      </div>
+
       <div ref={canvasAreaEl} id="canvasArea" className="canvas fixedcanvas">
         <canvas ref={srcCanvasEl} id="srcCanvas" className="workCanvas" />
         <canvas ref={resultCanvasEl} id="resultCanvas" className="workCanvas" />
