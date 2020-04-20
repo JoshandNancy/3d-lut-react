@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "51a01cc9a56fdd0c7800070711185fbf",
+    "revision": "e8831117111f3cef2679a3a157fc8f2f",
     "url": "/3d-lut-react/index.html"
   },
   {
-    "revision": "1caa13beafb1c551caa8",
+    "revision": "dc4ef10b50ade82d5cf0",
     "url": "/3d-lut-react/static/css/2.370f3f15.chunk.css"
   },
   {
-    "revision": "532976c571def2e5ed14",
+    "revision": "9fa12ce932c93a1bf11e",
     "url": "/3d-lut-react/static/css/main.ee45951f.chunk.css"
   },
   {
-    "revision": "1caa13beafb1c551caa8",
-    "url": "/3d-lut-react/static/js/2.194d25e1.chunk.js"
+    "revision": "dc4ef10b50ade82d5cf0",
+    "url": "/3d-lut-react/static/js/2.ce63a081.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/3d-lut-react/static/js/2.194d25e1.chunk.js.LICENSE.txt"
+    "url": "/3d-lut-react/static/js/2.ce63a081.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "532976c571def2e5ed14",
-    "url": "/3d-lut-react/static/js/main.7f479645.chunk.js"
+    "revision": "9fa12ce932c93a1bf11e",
+    "url": "/3d-lut-react/static/js/main.43f362d5.chunk.js"
   },
   {
     "revision": "595ffc3b65e2576e7537",
@@ -34,6 +34,22 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "78fb966a086fb4b1c71e13cea0975e26",
     "url": "/3d-lut-react/static/media/BABYBLUE.78fb966a.png"
+  },
+  {
+    "revision": "82fdb2d6f130a9c22a123a98a64e879f",
+    "url": "/3d-lut-react/static/media/BOLD-1-2.82fdb2d6.png"
+  },
+  {
+    "revision": "18a2c9d1253ae6bfb98c340e311a2585",
+    "url": "/3d-lut-react/static/media/BOLD-1.18a2c9d1.png"
+  },
+  {
+    "revision": "58d8e5ba1b305e6618bf38de53c3b1d4",
+    "url": "/3d-lut-react/static/media/BOLD-2.58d8e5ba.png"
+  },
+  {
+    "revision": "bd1b1395e4f524ca59e6aff8530ebcea",
+    "url": "/3d-lut-react/static/media/BOLD-3.bd1b1395.png"
   },
   {
     "revision": "56bd2d499032e70e08e8b824c2bdbe9b",
@@ -234,10 +250,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "485f053cdee5d469f1583c46198280b6",
     "url": "/3d-lut-react/static/media/METRO-2.485f053c.png"
-  },
-  {
-    "revision": "a3cf6f2dedf1b1908fcf4eeb747d4333",
-    "url": "/3d-lut-react/static/media/MILKY_WAY.a3cf6f2d.png"
   },
   {
     "revision": "7d2487e7748e98dc9e4fefa3d52f9a33",

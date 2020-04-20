@@ -1,21 +1,25 @@
 {
   "files": {
     "main.css": "/3d-lut-react/static/css/main.ee45951f.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.7f479645.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.7f479645.chunk.js.map",
+    "main.js": "/3d-lut-react/static/js/main.43f362d5.chunk.js",
+    "main.js.map": "/3d-lut-react/static/js/main.43f362d5.chunk.js.map",
     "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
     "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
     "static/css/2.370f3f15.chunk.css": "/3d-lut-react/static/css/2.370f3f15.chunk.css",
-    "static/js/2.194d25e1.chunk.js": "/3d-lut-react/static/js/2.194d25e1.chunk.js",
-    "static/js/2.194d25e1.chunk.js.map": "/3d-lut-react/static/js/2.194d25e1.chunk.js.map",
+    "static/js/2.ce63a081.chunk.js": "/3d-lut-react/static/js/2.ce63a081.chunk.js",
+    "static/js/2.ce63a081.chunk.js.map": "/3d-lut-react/static/js/2.ce63a081.chunk.js.map",
     "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.2908852501eb5027b2947d96eb92aaf9.js": "/3d-lut-react/precache-manifest.2908852501eb5027b2947d96eb92aaf9.js",
+    "precache-manifest.a625e402ad84c4ef20f32ac08fa98e63.js": "/3d-lut-react/precache-manifest.a625e402ad84c4ef20f32ac08fa98e63.js",
     "service-worker.js": "/3d-lut-react/service-worker.js",
     "static/css/2.370f3f15.chunk.css.map": "/3d-lut-react/static/css/2.370f3f15.chunk.css.map",
     "static/css/main.ee45951f.chunk.css.map": "/3d-lut-react/static/css/main.ee45951f.chunk.css.map",
-    "static/js/2.194d25e1.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.194d25e1.chunk.js.LICENSE.txt",
+    "static/js/2.ce63a081.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.ce63a081.chunk.js.LICENSE.txt",
     "static/media/ALICE.png": "/3d-lut-react/static/media/ALICE.5689351a.png",
     "static/media/BABYBLUE.png": "/3d-lut-react/static/media/BABYBLUE.78fb966a.png",
+    "static/media/BOLD-1-2.png": "/3d-lut-react/static/media/BOLD-1-2.82fdb2d6.png",
+    "static/media/BOLD-1.png": "/3d-lut-react/static/media/BOLD-1.18a2c9d1.png",
+    "static/media/BOLD-2.png": "/3d-lut-react/static/media/BOLD-2.58d8e5ba.png",
+    "static/media/BOLD-3.png": "/3d-lut-react/static/media/BOLD-3.bd1b1395.png",
     "static/media/BREAD.png": "/3d-lut-react/static/media/BREAD.56bd2d49.png",
     "static/media/BREEZE.png": "/3d-lut-react/static/media/BREEZE.ad78cb2b.png",
     "static/media/BRIGHT_STANDARD.png": "/3d-lut-react/static/media/BRIGHT_STANDARD.9a05dea9.png",
@@ -66,7 +70,6 @@
     "static/media/MELLOW.png": "/3d-lut-react/static/media/MELLOW.eda08c24.png",
     "static/media/METRO-1.png": "/3d-lut-react/static/media/METRO-1.dbc991aa.png",
     "static/media/METRO-2.png": "/3d-lut-react/static/media/METRO-2.485f053c.png",
-    "static/media/MILKY_WAY.png": "/3d-lut-react/static/media/MILKY_WAY.a3cf6f2d.png",
     "static/media/NEON-1.png": "/3d-lut-react/static/media/NEON-1.7d2487e7.png",
     "static/media/NEON-2.png": "/3d-lut-react/static/media/NEON-2.a7f06d83.png",
     "static/media/NEON-3.png": "/3d-lut-react/static/media/NEON-3.425e94a3.png",
@@ -81,8 +84,8 @@
   "entrypoints": [
     "static/js/runtime-main.192440b1.js",
     "static/css/2.370f3f15.chunk.css",
-    "static/js/2.194d25e1.chunk.js",
+    "static/js/2.ce63a081.chunk.js",
     "static/css/main.ee45951f.chunk.css",
-    "static/js/main.7f479645.chunk.js"
+    "static/js/main.43f362d5.chunk.js"
   ]
 }
