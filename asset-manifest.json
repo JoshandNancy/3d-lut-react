@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/3d-lut-react/static/css/main.ee45951f.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.1a515c55.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.1a515c55.chunk.js.map",
+    "main.js": "/3d-lut-react/static/js/main.423f7667.chunk.js",
+    "main.js.map": "/3d-lut-react/static/js/main.423f7667.chunk.js.map",
     "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
     "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
     "static/css/2.370f3f15.chunk.css": "/3d-lut-react/static/css/2.370f3f15.chunk.css",
-    "static/js/2.f876960e.chunk.js": "/3d-lut-react/static/js/2.f876960e.chunk.js",
-    "static/js/2.f876960e.chunk.js.map": "/3d-lut-react/static/js/2.f876960e.chunk.js.map",
+    "static/js/2.0b254d76.chunk.js": "/3d-lut-react/static/js/2.0b254d76.chunk.js",
+    "static/js/2.0b254d76.chunk.js.map": "/3d-lut-react/static/js/2.0b254d76.chunk.js.map",
     "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.125b37178d735a77b0d8de34cc49db6f.js": "/3d-lut-react/precache-manifest.125b37178d735a77b0d8de34cc49db6f.js",
+    "precache-manifest.9339d6f8df299a15a85a3b583fb362c7.js": "/3d-lut-react/precache-manifest.9339d6f8df299a15a85a3b583fb362c7.js",
     "service-worker.js": "/3d-lut-react/service-worker.js",
     "static/css/2.370f3f15.chunk.css.map": "/3d-lut-react/static/css/2.370f3f15.chunk.css.map",
     "static/css/main.ee45951f.chunk.css.map": "/3d-lut-react/static/css/main.ee45951f.chunk.css.map",
-    "static/js/2.f876960e.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.f876960e.chunk.js.LICENSE.txt",
+    "static/js/2.0b254d76.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.0b254d76.chunk.js.LICENSE.txt",
     "static/media/ALICE.png": "/3d-lut-react/static/media/ALICE.5689351a.png",
     "static/media/BABYBLUE.png": "/3d-lut-react/static/media/BABYBLUE.78fb966a.png",
     "static/media/BREAD.png": "/3d-lut-react/static/media/BREAD.56bd2d49.png",
@@ -53,6 +53,7 @@
     "static/media/IPHONE11_NIGHT_OUTSIDE_ROAD_PINETREE.jpg": "/3d-lut-react/static/media/IPHONE11_NIGHT_OUTSIDE_ROAD_PINETREE.92b5ad3f.jpg",
     "static/media/IPHONE11_NIGHT_OUTSIDE_SOMELIGHT.JPG": "/3d-lut-react/static/media/IPHONE11_NIGHT_OUTSIDE_SOMELIGHT.48d2dc77.JPG",
     "static/media/IPHONE11_NIGHT_OUTSIDE_YELLOWLIGHT.jpg": "/3d-lut-react/static/media/IPHONE11_NIGHT_OUTSIDE_YELLOWLIGHT.6016122b.jpg",
+    "static/media/IPHONEX_NIGHT_OUTSIDE_CITY_CROSSROAD.jpg": "/3d-lut-react/static/media/IPHONEX_NIGHT_OUTSIDE_CITY_CROSSROAD.fd533be2.jpg",
     "static/media/ISLAND.png": "/3d-lut-react/static/media/ISLAND.a676902e.png",
     "static/media/JOYFUL-1.png": "/3d-lut-react/static/media/JOYFUL-1.f13f87e9.png",
     "static/media/JOYFUL-2.png": "/3d-lut-react/static/media/JOYFUL-2.84be158b.png",
@@ -77,8 +78,8 @@
   "entrypoints": [
     "static/js/runtime-main.192440b1.js",
     "static/css/2.370f3f15.chunk.css",
-    "static/js/2.f876960e.chunk.js",
+    "static/js/2.0b254d76.chunk.js",
     "static/css/main.ee45951f.chunk.css",
-    "static/js/main.1a515c55.chunk.js"
+    "static/js/main.423f7667.chunk.js"
   ]
 }
