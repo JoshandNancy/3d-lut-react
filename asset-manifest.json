@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/3d-lut-react/static/css/main.ee45951f.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.43f362d5.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.43f362d5.chunk.js.map",
+    "main.js": "/3d-lut-react/static/js/main.7bef62f2.chunk.js",
+    "main.js.map": "/3d-lut-react/static/js/main.7bef62f2.chunk.js.map",
     "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
     "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
     "static/css/2.370f3f15.chunk.css": "/3d-lut-react/static/css/2.370f3f15.chunk.css",
-    "static/js/2.ce63a081.chunk.js": "/3d-lut-react/static/js/2.ce63a081.chunk.js",
-    "static/js/2.ce63a081.chunk.js.map": "/3d-lut-react/static/js/2.ce63a081.chunk.js.map",
+    "static/js/2.eb8578de.chunk.js": "/3d-lut-react/static/js/2.eb8578de.chunk.js",
+    "static/js/2.eb8578de.chunk.js.map": "/3d-lut-react/static/js/2.eb8578de.chunk.js.map",
     "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.a625e402ad84c4ef20f32ac08fa98e63.js": "/3d-lut-react/precache-manifest.a625e402ad84c4ef20f32ac08fa98e63.js",
+    "precache-manifest.90b28387a6348db35ce3aafedcfb2381.js": "/3d-lut-react/precache-manifest.90b28387a6348db35ce3aafedcfb2381.js",
     "service-worker.js": "/3d-lut-react/service-worker.js",
     "static/css/2.370f3f15.chunk.css.map": "/3d-lut-react/static/css/2.370f3f15.chunk.css.map",
     "static/css/main.ee45951f.chunk.css.map": "/3d-lut-react/static/css/main.ee45951f.chunk.css.map",
-    "static/js/2.ce63a081.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.ce63a081.chunk.js.LICENSE.txt",
+    "static/js/2.eb8578de.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.eb8578de.chunk.js.LICENSE.txt",
     "static/media/ALICE.png": "/3d-lut-react/static/media/ALICE.5689351a.png",
     "static/media/BABYBLUE.png": "/3d-lut-react/static/media/BABYBLUE.78fb966a.png",
     "static/media/BOLD-1-2.png": "/3d-lut-react/static/media/BOLD-1-2.82fdb2d6.png",
@@ -28,6 +28,11 @@
     "static/media/DAY_INSIDE_BURGER.jpg": "/3d-lut-react/static/media/DAY_INSIDE_BURGER.77399eae.jpg",
     "static/media/DAY_INSIDE_GROUP.jpg": "/3d-lut-react/static/media/DAY_INSIDE_GROUP.32829a07.jpg",
     "static/media/DAY_INSIDE_RESTAURANT.jpg": "/3d-lut-react/static/media/DAY_INSIDE_RESTAURANT.ed248cd5.jpg",
+    "static/media/DAY_INSIDE_RESTAURANT_02.jpg": "/3d-lut-react/static/media/DAY_INSIDE_RESTAURANT_02.bdc695c2.jpg",
+    "static/media/DAY_INSIDE_RESTAURANT_03.jpg": "/3d-lut-react/static/media/DAY_INSIDE_RESTAURANT_03.d12f757d.jpg",
+    "static/media/DAY_INSIDE_RESTAURANT_PORTRAIT.jpg": "/3d-lut-react/static/media/DAY_INSIDE_RESTAURANT_PORTRAIT.0f93e823.jpg",
+    "static/media/DAY_INSIDE_SHELF.jpg": "/3d-lut-react/static/media/DAY_INSIDE_SHELF.6928d7d1.jpg",
+    "static/media/DAY_OUTSIDE_BRICKHOUSE.jpg": "/3d-lut-react/static/media/DAY_OUTSIDE_BRICKHOUSE.55bdb350.jpg",
     "static/media/DAY_OUTSIDE_PORTRAIT.jpg": "/3d-lut-react/static/media/DAY_OUTSIDE_PORTRAIT.f5921c9c.jpg",
     "static/media/DAY_OUTSIDE_SKY_ROAD.jpg": "/3d-lut-react/static/media/DAY_OUTSIDE_SKY_ROAD.29dc9f95.jpg",
     "static/media/DUSKY.png": "/3d-lut-react/static/media/DUSKY.cffc4a94.png",
@@ -79,13 +84,14 @@
     "static/media/OBSESSION.png": "/3d-lut-react/static/media/OBSESSION.8ddd1433.png",
     "static/media/PATAGONIA.png": "/3d-lut-react/static/media/PATAGONIA.f8e2d9a5.png",
     "static/media/SECRET.png": "/3d-lut-react/static/media/SECRET.5855d56f.png",
+    "static/media/SIMPLE_BW.jpg": "/3d-lut-react/static/media/SIMPLE_BW.5820bc74.jpg",
     "static/media/index.css": "/3d-lut-react/static/media/roboto-latin-900italic.ebf6d164.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.192440b1.js",
     "static/css/2.370f3f15.chunk.css",
-    "static/js/2.ce63a081.chunk.js",
+    "static/js/2.eb8578de.chunk.js",
     "static/css/main.ee45951f.chunk.css",
-    "static/js/main.43f362d5.chunk.js"
+    "static/js/main.7bef62f2.chunk.js"
   ]
 }
