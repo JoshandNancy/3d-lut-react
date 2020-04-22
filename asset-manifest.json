@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/3d-lut-react/static/css/main.ee45951f.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.7bef62f2.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.7bef62f2.chunk.js.map",
+    "main.js": "/3d-lut-react/static/js/main.a551aea1.chunk.js",
+    "main.js.map": "/3d-lut-react/static/js/main.a551aea1.chunk.js.map",
     "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
     "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
     "static/css/2.370f3f15.chunk.css": "/3d-lut-react/static/css/2.370f3f15.chunk.css",
-    "static/js/2.eb8578de.chunk.js": "/3d-lut-react/static/js/2.eb8578de.chunk.js",
-    "static/js/2.eb8578de.chunk.js.map": "/3d-lut-react/static/js/2.eb8578de.chunk.js.map",
+    "static/js/2.23d259b5.chunk.js": "/3d-lut-react/static/js/2.23d259b5.chunk.js",
+    "static/js/2.23d259b5.chunk.js.map": "/3d-lut-react/static/js/2.23d259b5.chunk.js.map",
     "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.90b28387a6348db35ce3aafedcfb2381.js": "/3d-lut-react/precache-manifest.90b28387a6348db35ce3aafedcfb2381.js",
+    "precache-manifest.3f38613b01f6437227fe96a577b810fc.js": "/3d-lut-react/precache-manifest.3f38613b01f6437227fe96a577b810fc.js",
     "service-worker.js": "/3d-lut-react/service-worker.js",
     "static/css/2.370f3f15.chunk.css.map": "/3d-lut-react/static/css/2.370f3f15.chunk.css.map",
     "static/css/main.ee45951f.chunk.css.map": "/3d-lut-react/static/css/main.ee45951f.chunk.css.map",
-    "static/js/2.eb8578de.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.eb8578de.chunk.js.LICENSE.txt",
+    "static/js/2.23d259b5.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.23d259b5.chunk.js.LICENSE.txt",
     "static/media/ALICE.png": "/3d-lut-react/static/media/ALICE.5689351a.png",
     "static/media/BABYBLUE.png": "/3d-lut-react/static/media/BABYBLUE.78fb966a.png",
     "static/media/BOLD-1-2.png": "/3d-lut-react/static/media/BOLD-1-2.82fdb2d6.png",
@@ -35,6 +35,7 @@
     "static/media/DAY_OUTSIDE_BRICKHOUSE.jpg": "/3d-lut-react/static/media/DAY_OUTSIDE_BRICKHOUSE.55bdb350.jpg",
     "static/media/DAY_OUTSIDE_PORTRAIT.jpg": "/3d-lut-react/static/media/DAY_OUTSIDE_PORTRAIT.f5921c9c.jpg",
     "static/media/DAY_OUTSIDE_SKY_ROAD.jpg": "/3d-lut-react/static/media/DAY_OUTSIDE_SKY_ROAD.29dc9f95.jpg",
+    "static/media/DISCOVERY.png": "/3d-lut-react/static/media/DISCOVERY.6d5fcead.png",
     "static/media/DUSKY.png": "/3d-lut-react/static/media/DUSKY.cffc4a94.png",
     "static/media/FINE_DINING.png": "/3d-lut-react/static/media/FINE_DINING.8b01e816.png",
     "static/media/FOREST.png": "/3d-lut-react/static/media/FOREST.212a412c.png",
@@ -90,8 +91,8 @@
   "entrypoints": [
     "static/js/runtime-main.192440b1.js",
     "static/css/2.370f3f15.chunk.css",
-    "static/js/2.eb8578de.chunk.js",
+    "static/js/2.23d259b5.chunk.js",
     "static/css/main.ee45951f.chunk.css",
-    "static/js/main.7bef62f2.chunk.js"
+    "static/js/main.a551aea1.chunk.js"
   ]
 }

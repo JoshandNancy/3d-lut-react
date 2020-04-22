@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "918ffd3033a9e51dde2bb02513343934",
+    "revision": "d5c355926032ff1b032dda0652a819c5",
     "url": "/3d-lut-react/index.html"
   },
   {
-    "revision": "abb35ad021b90d04d368",
+    "revision": "31ec5bc484579388fb61",
     "url": "/3d-lut-react/static/css/2.370f3f15.chunk.css"
   },
   {
-    "revision": "b6171195bf4569e976b5",
+    "revision": "3c6cd361685378623eea",
     "url": "/3d-lut-react/static/css/main.ee45951f.chunk.css"
   },
   {
-    "revision": "abb35ad021b90d04d368",
-    "url": "/3d-lut-react/static/js/2.eb8578de.chunk.js"
+    "revision": "31ec5bc484579388fb61",
+    "url": "/3d-lut-react/static/js/2.23d259b5.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/3d-lut-react/static/js/2.eb8578de.chunk.js.LICENSE.txt"
+    "url": "/3d-lut-react/static/js/2.23d259b5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b6171195bf4569e976b5",
-    "url": "/3d-lut-react/static/js/main.7bef62f2.chunk.js"
+    "revision": "3c6cd361685378623eea",
+    "url": "/3d-lut-react/static/js/main.a551aea1.chunk.js"
   },
   {
     "revision": "595ffc3b65e2576e7537",
@@ -110,6 +110,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "29dc9f958e450acec9ad176b78e2a431",
     "url": "/3d-lut-react/static/media/DAY_OUTSIDE_SKY_ROAD.29dc9f95.jpg"
+  },
+  {
+    "revision": "6d5fceadda0e6d6f7988cafde967bfee",
+    "url": "/3d-lut-react/static/media/DISCOVERY.6d5fcead.png"
   },
   {
     "revision": "cffc4a94bcb6cea5a9c8adac37e6d532",
