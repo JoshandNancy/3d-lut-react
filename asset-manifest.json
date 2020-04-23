@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/3d-lut-react/static/css/main.ee45951f.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.7057bbc9.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.7057bbc9.chunk.js.map",
+    "main.js": "/3d-lut-react/static/js/main.f863d242.chunk.js",
+    "main.js.map": "/3d-lut-react/static/js/main.f863d242.chunk.js.map",
     "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
     "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
     "static/css/2.370f3f15.chunk.css": "/3d-lut-react/static/css/2.370f3f15.chunk.css",
-    "static/js/2.e0eb181a.chunk.js": "/3d-lut-react/static/js/2.e0eb181a.chunk.js",
-    "static/js/2.e0eb181a.chunk.js.map": "/3d-lut-react/static/js/2.e0eb181a.chunk.js.map",
+    "static/js/2.b45a1dfd.chunk.js": "/3d-lut-react/static/js/2.b45a1dfd.chunk.js",
+    "static/js/2.b45a1dfd.chunk.js.map": "/3d-lut-react/static/js/2.b45a1dfd.chunk.js.map",
     "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.ec16c49513249377311a2968a60f600c.js": "/3d-lut-react/precache-manifest.ec16c49513249377311a2968a60f600c.js",
+    "precache-manifest.61b2d61b20c3eb55c551efe4b918cc49.js": "/3d-lut-react/precache-manifest.61b2d61b20c3eb55c551efe4b918cc49.js",
     "service-worker.js": "/3d-lut-react/service-worker.js",
     "static/css/2.370f3f15.chunk.css.map": "/3d-lut-react/static/css/2.370f3f15.chunk.css.map",
     "static/css/main.ee45951f.chunk.css.map": "/3d-lut-react/static/css/main.ee45951f.chunk.css.map",
-    "static/js/2.e0eb181a.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.e0eb181a.chunk.js.LICENSE.txt",
+    "static/js/2.b45a1dfd.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.b45a1dfd.chunk.js.LICENSE.txt",
     "static/media/ALICE.png": "/3d-lut-react/static/media/ALICE.5689351a.png",
     "static/media/BABYBLUE.png": "/3d-lut-react/static/media/BABYBLUE.78fb966a.png",
     "static/media/BOLD-1-2.png": "/3d-lut-react/static/media/BOLD-1-2.82fdb2d6.png",
@@ -25,6 +25,7 @@
     "static/media/BREEZE.png": "/3d-lut-react/static/media/BREEZE.ad78cb2b.png",
     "static/media/BRIGHT_STANDARD.png": "/3d-lut-react/static/media/BRIGHT_STANDARD.9a05dea9.png",
     "static/media/CITY_LIGHTS_3.png": "/3d-lut-react/static/media/CITY_LIGHTS_3.49e51a5c.png",
+    "static/media/CITY_LIGHTS_4.png": "/3d-lut-react/static/media/CITY_LIGHTS_4.1ca1a44c.png",
     "static/media/COLOR_CHART.jpg": "/3d-lut-react/static/media/COLOR_CHART.270ece4a.jpg",
     "static/media/DARLING.png": "/3d-lut-react/static/media/DARLING.958b57e6.png",
     "static/media/DAY_INSIDE_BURGER.jpg": "/3d-lut-react/static/media/DAY_INSIDE_BURGER.77399eae.jpg",
@@ -93,8 +94,8 @@
   "entrypoints": [
     "static/js/runtime-main.192440b1.js",
     "static/css/2.370f3f15.chunk.css",
-    "static/js/2.e0eb181a.chunk.js",
+    "static/js/2.b45a1dfd.chunk.js",
     "static/css/main.ee45951f.chunk.css",
-    "static/js/main.7057bbc9.chunk.js"
+    "static/js/main.f863d242.chunk.js"
   ]
 }
