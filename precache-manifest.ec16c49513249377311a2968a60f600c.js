@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d5c355926032ff1b032dda0652a819c5",
+    "revision": "f49b6bd92e2413c232605d4b1a9caa62",
     "url": "/3d-lut-react/index.html"
   },
   {
-    "revision": "31ec5bc484579388fb61",
+    "revision": "a4143095cc23f0865d7c",
     "url": "/3d-lut-react/static/css/2.370f3f15.chunk.css"
   },
   {
-    "revision": "3c6cd361685378623eea",
+    "revision": "9b492ce946e2b5eef6cf",
     "url": "/3d-lut-react/static/css/main.ee45951f.chunk.css"
   },
   {
-    "revision": "31ec5bc484579388fb61",
-    "url": "/3d-lut-react/static/js/2.23d259b5.chunk.js"
+    "revision": "a4143095cc23f0865d7c",
+    "url": "/3d-lut-react/static/js/2.e0eb181a.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/3d-lut-react/static/js/2.23d259b5.chunk.js.LICENSE.txt"
+    "url": "/3d-lut-react/static/js/2.e0eb181a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3c6cd361685378623eea",
-    "url": "/3d-lut-react/static/js/main.a551aea1.chunk.js"
+    "revision": "9b492ce946e2b5eef6cf",
+    "url": "/3d-lut-react/static/js/main.7057bbc9.chunk.js"
   },
   {
     "revision": "595ffc3b65e2576e7537",
@@ -52,6 +52,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/3d-lut-react/static/media/BOLD-3.bd1b1395.png"
   },
   {
+    "revision": "d98b0a253d49aa5e2a6b6db20510f522",
+    "url": "/3d-lut-react/static/media/BOLD_PORTRAIT_1.d98b0a25.png"
+  },
+  {
     "revision": "56bd2d499032e70e08e8b824c2bdbe9b",
     "url": "/3d-lut-react/static/media/BREAD.56bd2d49.png"
   },
@@ -62,6 +66,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9a05dea9b398e6f7387cb2fccc12dc04",
     "url": "/3d-lut-react/static/media/BRIGHT_STANDARD.9a05dea9.png"
+  },
+  {
+    "revision": "49e51a5c131481bad33311c8c28955da",
+    "url": "/3d-lut-react/static/media/CITY_LIGHTS_3.49e51a5c.png"
   },
   {
     "revision": "270ece4a7d3fcd8a3449a0e70a6f8844",
