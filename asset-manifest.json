@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/3d-lut-react/static/css/main.ee45951f.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.6d36844a.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.6d36844a.chunk.js.map",
+    "main.js": "/3d-lut-react/static/js/main.77ca245d.chunk.js",
+    "main.js.map": "/3d-lut-react/static/js/main.77ca245d.chunk.js.map",
     "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
     "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
     "static/css/2.370f3f15.chunk.css": "/3d-lut-react/static/css/2.370f3f15.chunk.css",
     "static/js/2.82a62708.chunk.js": "/3d-lut-react/static/js/2.82a62708.chunk.js",
     "static/js/2.82a62708.chunk.js.map": "/3d-lut-react/static/js/2.82a62708.chunk.js.map",
     "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.470934070874e0b437082e7fa8c7f009.js": "/3d-lut-react/precache-manifest.470934070874e0b437082e7fa8c7f009.js",
+    "precache-manifest.dd9bd7cb626d9a9bd469f465f9537663.js": "/3d-lut-react/precache-manifest.dd9bd7cb626d9a9bd469f465f9537663.js",
     "service-worker.js": "/3d-lut-react/service-worker.js",
     "static/css/2.370f3f15.chunk.css.map": "/3d-lut-react/static/css/2.370f3f15.chunk.css.map",
     "static/css/main.ee45951f.chunk.css.map": "/3d-lut-react/static/css/main.ee45951f.chunk.css.map",
@@ -97,6 +97,6 @@
     "static/css/2.370f3f15.chunk.css",
     "static/js/2.82a62708.chunk.js",
     "static/css/main.ee45951f.chunk.css",
-    "static/js/main.6d36844a.chunk.js"
+    "static/js/main.77ca245d.chunk.js"
   ]
 }
