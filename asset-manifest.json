@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/3d-lut-react/static/css/main.c78fe82f.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.4ae0b54b.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.4ae0b54b.chunk.js.map",
-    "runtime-main.js": "/3d-lut-react/static/js/runtime-main.9586b8fb.js",
-    "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.9586b8fb.js.map",
+    "main.css": "/3d-lut-react/static/css/main.bfaff333.chunk.css",
+    "main.js": "/3d-lut-react/static/js/main.d796d57c.chunk.js",
+    "main.js.map": "/3d-lut-react/static/js/main.d796d57c.chunk.js.map",
+    "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
+    "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
     "static/css/2.370f3f15.chunk.css": "/3d-lut-react/static/css/2.370f3f15.chunk.css",
-    "static/js/2.4c41983a.chunk.js": "/3d-lut-react/static/js/2.4c41983a.chunk.js",
-    "static/js/2.4c41983a.chunk.js.map": "/3d-lut-react/static/js/2.4c41983a.chunk.js.map",
+    "static/js/2.a0dbd8b2.chunk.js": "/3d-lut-react/static/js/2.a0dbd8b2.chunk.js",
+    "static/js/2.a0dbd8b2.chunk.js.map": "/3d-lut-react/static/js/2.a0dbd8b2.chunk.js.map",
     "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.c8e0e8474f2953deeec6ca5d1b9533e2.js": "/3d-lut-react/precache-manifest.c8e0e8474f2953deeec6ca5d1b9533e2.js",
+    "precache-manifest.5fcb0ccc00a6692571e24c9dd037e227.js": "/3d-lut-react/precache-manifest.5fcb0ccc00a6692571e24c9dd037e227.js",
     "service-worker.js": "/3d-lut-react/service-worker.js",
     "static/css/2.370f3f15.chunk.css.map": "/3d-lut-react/static/css/2.370f3f15.chunk.css.map",
-    "static/css/main.c78fe82f.chunk.css.map": "/3d-lut-react/static/css/main.c78fe82f.chunk.css.map",
-    "static/js/2.4c41983a.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.4c41983a.chunk.js.LICENSE.txt",
+    "static/css/main.bfaff333.chunk.css.map": "/3d-lut-react/static/css/main.bfaff333.chunk.css.map",
+    "static/js/2.a0dbd8b2.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.a0dbd8b2.chunk.js.LICENSE.txt",
     "static/media/ALICE.png": "/3d-lut-react/static/media/ALICE.5689351a.png",
     "static/media/BABYBLUE.png": "/3d-lut-react/static/media/BABYBLUE.78fb966a.png",
     "static/media/BOLD-1-2.png": "/3d-lut-react/static/media/BOLD-1-2.82fdb2d6.png",
@@ -93,10 +93,10 @@
     "static/media/index.css": "/3d-lut-react/static/media/roboto-latin-900italic.ebf6d164.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.9586b8fb.js",
+    "static/js/runtime-main.192440b1.js",
     "static/css/2.370f3f15.chunk.css",
-    "static/js/2.4c41983a.chunk.js",
-    "static/css/main.c78fe82f.chunk.css",
-    "static/js/main.4ae0b54b.chunk.js"
+    "static/js/2.a0dbd8b2.chunk.js",
+    "static/css/main.bfaff333.chunk.css",
+    "static/js/main.d796d57c.chunk.js"
   ]
 }
