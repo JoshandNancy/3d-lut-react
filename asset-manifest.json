@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/3d-lut-react/static/css/main.bfaff333.chunk.css",
-    "main.js": "/3d-lut-react/static/js/main.a9de5372.chunk.js",
-    "main.js.map": "/3d-lut-react/static/js/main.a9de5372.chunk.js.map",
+    "main.css": "/3d-lut-react/static/css/main.f4ce9673.chunk.css",
+    "main.js": "/3d-lut-react/static/js/main.4637fda3.chunk.js",
+    "main.js.map": "/3d-lut-react/static/js/main.4637fda3.chunk.js.map",
     "runtime-main.js": "/3d-lut-react/static/js/runtime-main.192440b1.js",
     "runtime-main.js.map": "/3d-lut-react/static/js/runtime-main.192440b1.js.map",
     "static/css/2.370f3f15.chunk.css": "/3d-lut-react/static/css/2.370f3f15.chunk.css",
-    "static/js/2.a0dbd8b2.chunk.js": "/3d-lut-react/static/js/2.a0dbd8b2.chunk.js",
-    "static/js/2.a0dbd8b2.chunk.js.map": "/3d-lut-react/static/js/2.a0dbd8b2.chunk.js.map",
+    "static/js/2.02947c19.chunk.js": "/3d-lut-react/static/js/2.02947c19.chunk.js",
+    "static/js/2.02947c19.chunk.js.map": "/3d-lut-react/static/js/2.02947c19.chunk.js.map",
     "index.html": "/3d-lut-react/index.html",
-    "precache-manifest.65e980042e70cf7e6b9e2233f4173b3f.js": "/3d-lut-react/precache-manifest.65e980042e70cf7e6b9e2233f4173b3f.js",
+    "precache-manifest.fee30bf7493985ba9c64e977120e1ca1.js": "/3d-lut-react/precache-manifest.fee30bf7493985ba9c64e977120e1ca1.js",
     "service-worker.js": "/3d-lut-react/service-worker.js",
     "static/css/2.370f3f15.chunk.css.map": "/3d-lut-react/static/css/2.370f3f15.chunk.css.map",
-    "static/css/main.bfaff333.chunk.css.map": "/3d-lut-react/static/css/main.bfaff333.chunk.css.map",
-    "static/js/2.a0dbd8b2.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.a0dbd8b2.chunk.js.LICENSE.txt",
+    "static/css/main.f4ce9673.chunk.css.map": "/3d-lut-react/static/css/main.f4ce9673.chunk.css.map",
+    "static/js/2.02947c19.chunk.js.LICENSE.txt": "/3d-lut-react/static/js/2.02947c19.chunk.js.LICENSE.txt",
     "static/media/ALICE.png": "/3d-lut-react/static/media/ALICE.5689351a.png",
     "static/media/BABYBLUE.png": "/3d-lut-react/static/media/BABYBLUE.78fb966a.png",
     "static/media/BOLD-1-2.png": "/3d-lut-react/static/media/BOLD-1-2.82fdb2d6.png",
@@ -95,8 +95,8 @@
   "entrypoints": [
     "static/js/runtime-main.192440b1.js",
     "static/css/2.370f3f15.chunk.css",
-    "static/js/2.a0dbd8b2.chunk.js",
-    "static/css/main.bfaff333.chunk.css",
-    "static/js/main.a9de5372.chunk.js"
+    "static/js/2.02947c19.chunk.js",
+    "static/css/main.f4ce9673.chunk.css",
+    "static/js/main.4637fda3.chunk.js"
   ]
 }
