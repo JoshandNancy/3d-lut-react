@@ -668,7 +668,7 @@ function Home({
     } = await axios.get(sampleSource);
     console.log("get urls:", resources);
     errMSG.innerText = "Image list updated!";
-    errMSG.style.backgroundColor = themeColors.ready_green;
+    errMSG.style.backgroundColor = themeColors.ready_teal;
 
     const sample_url_lists = resources.map((x) =>
       cloud_resized_download_url.concat(x.public_id)
@@ -691,6 +691,8 @@ function Home({
       data: { resources },
     } = await axios.get(sampleSource);
     console.log("get urls:", resources);
+    errMSG.innerText = "LUT list updated!";
+    errMSG.style.backgroundColor = themeColors.ready_teal;
 
     const sample_url_lists = resources.map((x) =>
       cloud_default_url.concat(x.public_id)
