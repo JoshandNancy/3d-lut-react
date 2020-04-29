@@ -2,6 +2,17 @@
   display: none;
 }
 
+.progress-bar {
+  width: 100%;
+  position: relative;
+  height: 10px;
+}
+.progress-bar .progress {
+  height: 4px;
+  background-color: #ff5533;
+  width: 100%;
+}
+
 /*
  * Control layouts
  */
@@ -104,6 +115,35 @@
   font-weight: 600;
   font-size: normal;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.label--profile {
+  color: #0f0f0f;
+  font-weight: 300;
+  font-size: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile--container {
+  display: inline-flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.profile--label {
+  padding-right: 10px;
+}
+
+.profile--selector {
+  padding-right: 10px;
+  flex-direction: column;
+}
+
+.profile--btn {
+}
+
+.profile--select {
+  width: fit-content;
 }
 
 .selector {
@@ -284,10 +324,22 @@ h5 {
   color: #3f3f3f;
 }
 
+.loadBtnArea {
+  display: flexbox;
+  text-align: center;
+  padding: 10px;
+  align-self: auto;
+}
 .controlBtnArea {
   text-align: center;
   padding: 10px;
   padding-bottom: 35px;
+}
+
+.profileBtnArea {
+  text-align: center;
+
+  padding-bottom: 15px;
 }
 
 .input-range__slider {

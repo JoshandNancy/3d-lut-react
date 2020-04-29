@@ -8,7 +8,7 @@ import "typeface-roboto";
 
 store.subscribe(() => {
   saveState(store.getState());
-  console.log("store updated: ", store.getState());
+  //console.log("store updated: ", store.getState());
 });
 
 ReactDOM.render(

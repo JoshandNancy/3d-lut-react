@@ -13,6 +13,9 @@ const imgManager = createSlice({
         srcname: action.payload.label,
         lut: state.lut,
         lutname: state.lutname,
+        srclist: state.srclist,
+        lutlist: state.lutlist,
+        profile: state.profile,
       };
     },
     selectLut: (state, action) => {
@@ -21,11 +24,57 @@ const imgManager = createSlice({
         srcname: state.srcname,
         lut: action.payload.value,
         lutname: action.payload.label,
+        srclist: state.srclist,
+        lutlist: state.lutlist,
+        profile: state.profile,
+      };
+    },
+    updateSrcList: (state, action) => {
+      //console.log("updateSrcList action.payload :", action.payload);
+      return {
+        src: state.src,
+        srcname: state.srcname,
+        lut: state.lut,
+        lutname: state.lutname,
+        srclist: [...state.srclist, action.payload],
+        lutlist: state.lutlist,
+        profile: state.profile,
+      };
+    },
+
+    updateLutList: (state, action) => {
+      //console.log("updateSrcList action.payload :", action.payload);
+      return {
+        src: state.src,
+        srcname: state.srcname,
+        lut: state.lut,
+        lutname: state.lutname,
+        srclist: state.srclist,
+        lutlist: [...state.lutlist, action.payload],
+        profile: state.profile,
+      };
+    },
+
+    selectProfile: (state, action) => {
+      return {
+        src: state.src,
+        srcname: state.srcname,
+        lut: state.lut,
+        lutname: state.lutname,
+        srclist: state.srclist,
+        lutlist: state.lutlist,
+        profile: action.payload,
       };
     },
   },
 });
 
-export const { selectSrc, selectLut } = imgManager.actions;
+export const {
+  selectSrc,
+  selectLut,
+  updateSrcList,
+  updateLutList,
+  selectProfile,
+} = imgManager.actions;
 
 export default configureStore({ reducer: imgManager.reducer });
