@@ -16,6 +16,7 @@ const imgManager = createSlice({
         srclist: state.srclist,
         lutlist: state.lutlist,
         profile: state.profile,
+        quality: state.quality,
       };
     },
     selectLut: (state, action) => {
@@ -27,6 +28,7 @@ const imgManager = createSlice({
         srclist: state.srclist,
         lutlist: state.lutlist,
         profile: state.profile,
+        quality: state.quality,
       };
     },
     updateSrcList: (state, action) => {
@@ -39,6 +41,7 @@ const imgManager = createSlice({
         srclist: [...state.srclist, action.payload],
         lutlist: state.lutlist,
         profile: state.profile,
+        quality: state.quality,
       };
     },
 
@@ -52,6 +55,7 @@ const imgManager = createSlice({
         srclist: state.srclist,
         lutlist: [...state.lutlist, action.payload],
         profile: state.profile,
+        quality: state.quality,
       };
     },
 
@@ -64,6 +68,20 @@ const imgManager = createSlice({
         srclist: state.srclist,
         lutlist: state.lutlist,
         profile: action.payload,
+        quality: state.quality,
+      };
+    },
+
+    selectQuality: (state, action) => {
+      return {
+        src: state.src,
+        srcname: state.srcname,
+        lut: state.lut,
+        lutname: state.lutname,
+        srclist: state.srclist,
+        lutlist: state.lutlist,
+        profile: state.profile,
+        quality: { url: action.payload.url, name: action.payload.name },
       };
     },
   },
@@ -75,6 +93,7 @@ export const {
   updateSrcList,
   updateLutList,
   selectProfile,
+  selectQuality,
 } = imgManager.actions;
 
 export default configureStore({ reducer: imgManager.reducer });

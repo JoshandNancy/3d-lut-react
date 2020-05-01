@@ -331,8 +331,11 @@ h5 {
   align-self: auto;
 }
 .controlBtnArea {
+  display: flexbox;
   text-align: center;
-  padding: 10px;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
   padding-bottom: 35px;
 }
 

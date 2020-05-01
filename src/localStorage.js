@@ -1,6 +1,7 @@
 //import PropTypes from "prop-types";
 import SampleImages from "./components/SampleImages";
 import LutImages from "./components/LutImages";
+import config from "./components/cloudinary_config";
 
 export const loadState = () => {
   try {
@@ -8,8 +9,13 @@ export const loadState = () => {
     const initialLutList = LutImages;
     const initialProfile = "merlin";
     const serializedState = localStorage.getItem("state");
+    const initialQuaility = {
+      url: config.cloud_1024_download_url,
+      name: "1024",
+    };
+
     //const fileStorage = localStorage.getItem("srclist");
-    //console.log("firstload: ", serializedState);
+    console.log("firstloadQuality: ", initialQuaility);
     if (serializedState === null) {
       return {
         src: "https://i.imgur.com/BlUVaOM.jpg",
@@ -19,6 +25,7 @@ export const loadState = () => {
         srclist: initialSampleList,
         lutlist: initialLutList,
         profile: initialProfile,
+        quality: initialQuaility,
       };
     }
     return JSON.parse(serializedState);

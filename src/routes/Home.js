@@ -8,6 +8,7 @@ import {
   updateSrcList,
   updateLutList,
   selectProfile,
+  selectQuality,
 } from "../store";
 import InputRange from "react-input-range";
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,11 +24,14 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
+//import FormLabel from "@material-ui/core/FormLabel";
 
-const { cloudName } = config;
-const { cloud_default_url } = config;
-const { cloud_resized_download_url } = config;
+const {
+  cloudName,
+  cloud_default_url,
+  cloud_1024_download_url,
+  cloud_2048_download_url,
+} = config;
 
 const themeColors = {
   ready_green: "#00A780",
@@ -84,6 +88,7 @@ function Home({
   SrcListReducer,
   LutListReducer,
   ProfileReducer,
+  QualityReducer,
 }) {
   const errMsgEl = useRef();
   const resultAreaEl = useRef();
@@ -119,8 +124,37 @@ function Home({
     ProfileReducer(event.target.value);
   };
 
+  const onQualityChange = (event) => {
+    //console.log(event);
+    let selectedQuality = null;
+    if (event.target.value === "1024") {
+      selectedQuality = {
+        url: cloud_1024_download_url,
+        name: event.target.value,
+      };
+      setQuality(selectedQuality);
+      QualityReducer(selectedQuality);
+    } else if (event.target.value === "2048") {
+      selectedQuality = {
+        url: cloud_2048_download_url,
+        name: event.target.value,
+      };
+      setQuality(selectedQuality);
+      QualityReducer(selectedQuality);
+    } else {
+      selectedQuality = { url: cloud_default_url, name: "Full" };
+      setQuality(selectedQuality);
+      QualityReducer(selectedQuality);
+    }
+    console.log(event.target.value);
+  };
+
   const [opacity, setOpacity] = useState(70); // InputRange Initial Value
   const [profile, setProfile] = useState(imgManagerSt.profile);
+  const [quality, setQuality] = useState({
+    url: cloud_1024_download_url,
+    name: "1024",
+  });
 
   let sourceImage = document.createElement("img");
   let lutImage = document.createElement("img");
@@ -670,14 +704,19 @@ function Home({
     errMSG.innerText = "Image list updated!";
     errMSG.style.backgroundColor = themeColors.ready_teal;
 
-    const sample_url_lists = resources.map((x) =>
-      cloud_resized_download_url.concat(x.public_id)
+    const sample_url_lists = resources.map(
+      (x) => quality.url.concat(x.public_id, ".jpg") // cloud quality
     );
 
     console.log("sample_url_lists: ", sample_url_lists);
 
+    let sliceLength = 52;
+
+    if (quality.name !== "Full") {
+      sliceLength = 59;
+    }
     const convert_push_urls = sample_url_lists.map((url_item) => ({
-      name: url_item.slice(59),
+      name: url_item.slice(sliceLength),
       url: url_item,
     }));
 
@@ -760,35 +799,47 @@ function Home({
               />
             </RadioGroup>
           </FormControl>
-
-          {/*
-          <RadioGroup onChange={onProfileChange} horizontal>
-            <RadioButton
-              value="merlin"
-              pointColor={themeColors.progress_default}
-            >
-              MERLIN__
-            </RadioButton>
-            <RadioButton
-              value="noori"
-              pointColor={themeColors.progress_default}
-            >
-              NOORI__
-            </RadioButton>
-            <RadioButton
-              value="seryeong"
-              pointColor={themeColors.progress_default}
-            >
-              SERYEONG__
-            </RadioButton>
-          </RadioGroup>
-          */}
         </div>
-        <div className="profile--btn">
-          <button className="btn btn-2 btn-2d" onClick={clearAndRefresh}>
-            Reset
-          </button>
+      </div>
+      <div className="profile--container">
+        <div className="profile--label">
+          <label>Quality</label>
         </div>
+        <div className="profile--selector">
+          <FormControl component="fieldset">
+            <RadioGroup
+              row
+              aria-label="quality"
+              name="quality"
+              value={quality.name}
+              onChange={onQualityChange}
+            >
+              <FormControlLabel
+                value="1024"
+                control={<Radio />}
+                label="1024"
+                labelPlacement="top"
+              />
+              <FormControlLabel
+                value="2048"
+                control={<Radio />}
+                label="2048"
+                labelPlacement="top"
+              />
+              <FormControlLabel
+                value="Full"
+                control={<Radio />}
+                label="Full"
+                labelPlacement="top"
+              />
+            </RadioGroup>
+          </FormControl>
+        </div>
+      </div>
+      <div className="controlBtnArea">
+        <button className="btn btn-2 btn-2d" onClick={clearAndRefresh}>
+          Reset
+        </button>
       </div>
       <div className="loadBtnArea"></div>
       <div id="dropbox" ref={dropboxEl}>
@@ -898,6 +949,7 @@ function mapDispatchToProps(dispatch, ownProps) {
     SrcListReducer: (value) => dispatch(updateSrcList(value, ownProps)),
     LutListReducer: (value) => dispatch(updateLutList(value, ownProps)),
     ProfileReducer: (value) => dispatch(selectProfile(value, ownProps)),
+    QualityReducer: (value) => dispatch(selectQuality(value, ownProps)),
   };
 }
 
