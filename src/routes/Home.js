@@ -858,7 +858,7 @@ function Home({
               id="file"
               name="imgInput"
               type="file"
-              accept="image/png, image/jpeg"
+              accept="image/png, image/jpeg, image/heic"
             />
             <span className="file-custom file-source"></span>
           </label>
