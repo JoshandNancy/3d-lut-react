@@ -24,7 +24,11 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import Checkbox from "@material-ui/core/Checkbox";
 //import FormLabel from "@material-ui/core/FormLabel";
+//import Canvas from "context-blender";
+
+//https://github.com/Phrogz/context-blender
 
 const {
   cloudName,
@@ -97,6 +101,7 @@ function Home({
   const srcCanvasEl = useRef();
   const resultCanvasEl = useRef();
   const lutCanvasEl = useRef();
+  const textureCanvasEl = useRef();
   const dropboxEl = useRef();
   const lutboxEl = useRef();
   const dropmsgEl = useRef();
@@ -110,7 +115,7 @@ function Home({
     dropmsg.innerText = event.label;
     dropbox.style.backgroundColor = themeColors.ready_green;
     SrcReducer(event); // 소스 파일 업데이트
-    console.log("Select Event:", event);
+    //console.log("Select Event:", event);
   };
   const onLutChange = (event) => {
     lutmsg.innerText = event.label;
@@ -149,20 +154,35 @@ function Home({
     console.log(event.target.value);
   };
 
+  const handleTexture = (event) => {
+    setIsTextureOn(event.target.checked);
+  };
+
+  const handleVig = (event) => {
+    setIsVigOn(event.target.checked);
+  };
+
   const [opacity, setOpacity] = useState(70); // InputRange Initial Value
   const [profile, setProfile] = useState(imgManagerSt.profile);
   const [quality, setQuality] = useState({
     url: cloud_1024_download_url,
     name: "1024",
   });
+  const [isTextureOn, setIsTextureOn] = useState(false);
+  const [isVigOn, setIsVigOn] = useState(false);
 
   let sourceImage = document.createElement("img");
   let lutImage = document.createElement("img");
+  let textureImage = document.createElement("img");
+  let vigImage = document.createElement("img");
 
   let imageDataWrapper = null;
   let imageData = null;
   let imageDataWrapper3 = null;
   let imageData3 = null;
+
+  let imageDataWrapper4 = null;
+  let imageData4 = null;
 
   // 캔버스 초기화
   let c = null;
@@ -171,6 +191,8 @@ function Home({
   let ctx2 = null;
   let lutCanvas = null;
   let lutCanvasContext = null;
+  let textureCanvas = null;
+  let textureCanvasContext = null;
 
   // 파일 드롭 영역 초기화
   let dropbox = null;
@@ -196,6 +218,10 @@ function Home({
     lutCanvas = lutCanvasEl.current;
     if (lutCanvas) {
       lutCanvasContext = lutCanvas.getContext("2d");
+    }
+    textureCanvas = textureCanvasEl.current;
+    if (textureCanvas) {
+      textureCanvasContext = textureCanvas.getContext("2d");
     }
     errMSG = errMsgEl.current;
     errMSG.style.backgroundColor = themeColors.ready_teal;
@@ -281,22 +307,56 @@ function Home({
     lutImage.onerror = () => {
       errMSG.innerText = "Error occured loading LUT";
       errMSG.style.backgroundColor = "red";
+      return;
     };
   }
 
   function openSource() {
     sourceImage.src = imgManagerSt.src; // IMAGE URL
     sourceImage.crossOrigin = "Anonymous";
-    sourceImage.onload = processImage;
+    sourceImage.onload = openTexture;
     sourceImage.onerror = () => {
       errMSG.innerText = "Error occured loading image";
       errMSG.style.backgroundColor = "red";
+      return;
+    };
+  }
+
+  function openTexture() {
+    let srcWidth = sourceImage.width;
+    let srcHeight = sourceImage.height;
+    let alpha = 100; // 그레인 알파값 - 현재는 비정상적으로 동작함 (context-blender 알고리즘 이슈)
+
+    let textureURL = `https://res.cloudinary.com/joshandnancy/w_${srcWidth},h_${srcHeight},o_${alpha}/TEXTURES/GRAIN_50.jpg`;
+    //console.log("texture URL", textureURL);
+    textureImage.src = textureURL;
+    textureImage.crossOrigin = "Anonymous";
+    textureImage.onload = openVig;
+    textureImage.onerror = () => {
+      errMSG.innerText = "Error occured loading texture";
+      errMSG.style.backgroundColor = "red";
+    };
+  }
+  function openVig() {
+    let srcWidth = sourceImage.width;
+    let srcHeight = sourceImage.height;
+    let alpha = 50; //비네팅 알파값
+
+    let vigURL = `https://res.cloudinary.com/joshandnancy/w_${srcWidth},h_${srcHeight},o_${alpha}/TEXTURES/VIGNETTE.jpg`;
+    //console.log("texture URL", vigURL);
+    vigImage.src = vigURL;
+    vigImage.crossOrigin = "Anonymous";
+    vigImage.onload = processImage;
+    vigImage.onerror = () => {
+      errMSG.innerText = "Error occured loading vignette";
+      errMSG.style.backgroundColor = "red";
+      return;
     };
   }
   // LUT 연산 부분
   function processImage() {
-    c.width = c2.width = sourceImage.width;
-    c.height = c2.height = sourceImage.height;
+    c.width = c2.width = textureCanvas.width = sourceImage.width;
+    c.height = c2.height = textureCanvas.height = sourceImage.height;
 
     if (c.width === 0) {
       errMSG.innerText = "Image is not loaded! Try again!";
@@ -316,16 +376,18 @@ function Home({
     try {
       imageDataWrapper = ctx.getImageData(0, 0, c.width, c.height);
     } catch (err) {
-      console.log(err);
+      console.log("ctx.getImageData error :", err);
       errMSG.innerText = err;
       errMSG.style.backgroundColor = "red";
+      return;
     }
     try {
       imageData = imageDataWrapper.data;
     } catch (err) {
-      console.log(err);
+      console.log("ImageDataWrapper error :", err);
       errMSG.innerText = err;
       errMSG.style.backgroundColor = "red";
+      return;
     }
 
     lutCanvasContext.drawImage(lutImage, 0, 0);
@@ -337,16 +399,18 @@ function Home({
         lutCanvas.height
       );
     } catch (err) {
-      console.log(err);
+      console.log("lutCanvas ImageData wapper error :", err);
       errMSG.innerText = err;
       errMSG.style.backgroundColor = "red";
+      return;
     }
     try {
       imageData3 = imageDataWrapper3.data;
     } catch (err) {
-      console.log(err);
+      console.log("imageDataWrapper3 to imageData3 error :", err);
       errMSG.innerText = err;
       errMSG.style.backgroundColor = "red";
+      return;
     }
     let lutOpacity = opacity / 100;
     //console.log(lutOpacity);
@@ -355,37 +419,211 @@ function Home({
       errMSG.style.backgroundColor = "red";
       return;
     }
-    for (var i = 0; i < imageData.length; i += 4) {
-      //console.log("rendering...");
-      var r = Math.floor(imageData[i] / 4);
-      var g = Math.floor(imageData[i + 1] / 4);
-      var b = Math.floor(imageData[i + 2] / 4);
-      var lutX = (b % 8) * 64 + r;
-      var lutY = Math.floor(b / 8) * 64 + g;
-      var lutIndex = (lutY * 512 + lutX) * 4;
 
-      imageData[i] =
-        imageData3[lutIndex] * lutOpacity + imageData[i] * (1 - lutOpacity);
-      imageData[i + 1] =
-        imageData3[lutIndex + 1] * lutOpacity +
-        imageData[i + 1] * (1 - lutOpacity);
-      imageData[i + 2] =
-        imageData3[lutIndex + 2] * lutOpacity +
-        imageData[i + 2] * (1 - lutOpacity);
+    try {
+      for (var i = 0; i < imageData.length; i += 4) {
+        //console.log("rendering...");
+        var r = Math.floor(imageData[i] / 4);
+        var g = Math.floor(imageData[i + 1] / 4);
+        var b = Math.floor(imageData[i + 2] / 4);
+        var lutX = (b % 8) * 64 + r;
+        var lutY = Math.floor(b / 8) * 64 + g;
+        var lutIndex = (lutY * 512 + lutX) * 4;
+
+        imageData[i] =
+          imageData3[lutIndex] * lutOpacity + imageData[i] * (1 - lutOpacity);
+        imageData[i + 1] =
+          imageData3[lutIndex + 1] * lutOpacity +
+          imageData[i + 1] * (1 - lutOpacity);
+        imageData[i + 2] =
+          imageData3[lutIndex + 2] * lutOpacity +
+          imageData[i + 2] * (1 - lutOpacity);
+      }
+    } catch (err) {
+      console.log(err);
+      errMSG.innerText = err;
+      errMSG.style.backgroundColor = "red";
+      return;
     }
     //complete and refresh UI
+
+    if (isTextureOn) {
+      textureCanvasContext.drawImage(textureImage, 0, 0);
+      try {
+        imageDataWrapper4 = textureCanvasContext.getImageData(
+          0,
+          0,
+          textureCanvas.width,
+          textureCanvas.height
+        );
+      } catch (err) {
+        console.log(err);
+        errMSG.innerText = err;
+        errMSG.style.backgroundColor = "red";
+        return;
+      }
+      try {
+        imageData4 = imageDataWrapper4.data;
+      } catch (err) {
+        console.log(err);
+        errMSG.innerText = err;
+        errMSG.style.backgroundColor = "red";
+        return;
+      }
+      //overlay algorithm here // from https://github.com/Phrogz/context-blender
+      function Foverlay(a, b) {
+        return a < 128
+          ? (a * b) >> 7 // (2*a*b)>>8 :
+          : 255 - (((255 - b) * (255 - a)) >> 7);
+      }
+
+      try {
+        for (var i = 0; i < imageData.length; i += 4) {
+          //console.log("rendering...");
+          var r = imageData[i],
+            g = imageData[i + 1],
+            b = imageData[i + 2];
+
+          var r2 = imageData4[i],
+            g2 = imageData4[i + 1],
+            b2 = imageData4[i + 2];
+
+          let sA = imageData4[i + 3] / 255,
+            dA = imageData[i + 3] / 255;
+
+          var f1 = dA * sA,
+            f2 = dA - f1,
+            f3 = sA - f1;
+
+          imageData[i] = f1 * Foverlay(r, r2) + f2 * r + f3 * r2;
+          imageData[i + 1] = f1 * Foverlay(g, g2) + f2 * g + f3 * g2;
+          imageData[i + 2] = f1 * Foverlay(b, b2) + f2 * b + f3 * b2;
+        }
+      } catch (err) {
+        console.log(err);
+        errMSG.innerText = err;
+        errMSG.style.backgroundColor = "red";
+        return;
+      }
+
+      //ctx2.putImageData(imageDataWrapper, 0, 0);
+    }
+
+    if (isVigOn) {
+      textureCanvasContext.drawImage(vigImage, 0, 0);
+      try {
+        imageDataWrapper4 = textureCanvasContext.getImageData(
+          0,
+          0,
+          textureCanvas.width,
+          textureCanvas.height
+        );
+      } catch (err) {
+        console.log(err);
+        errMSG.innerText = err;
+        errMSG.style.backgroundColor = "red";
+        return;
+      }
+      try {
+        imageData4 = imageDataWrapper4.data;
+      } catch (err) {
+        console.log(err);
+        errMSG.innerText = err;
+        errMSG.style.backgroundColor = "red";
+        return;
+      }
+      //multiply algorithm here // from https://github.com/Phrogz/context-blender
+      try {
+        for (var i = 0; i < imageData.length; i += 4) {
+          //console.log("rendering...");
+          var r = imageData[i];
+          var g = imageData[i + 1];
+          var b = imageData[i + 2];
+
+          var r2 = imageData4[i];
+          var g2 = imageData4[i + 1];
+          var b2 = imageData4[i + 2];
+
+          let sA = imageData[i + 3] / 255;
+          let dA = imageData4[i + 3] / 255; // 알파값
+
+          let dA2 = sA + dA - sA * dA;
+          let sRA = (r2 / 255) * sA;
+          let dRA = (r / 255) * dA;
+          let sGA = (g2 / 255) * sA;
+          let dGA = (g / 255) * dA;
+          let sBA = (b2 / 255) * sA;
+          let dBA = (b / 255) * dA;
+
+          let demultiply = 255 / dA2;
+
+          let vigOpac = 1;
+
+          imageData[i] =
+            (sRA * (dRA * vigOpac) + sRA * (1 - dA) + dRA * (1 - sA)) *
+            demultiply;
+          imageData[i + 1] =
+            (sGA * (dGA * vigOpac) + sGA * (1 - dA) + dGA * (1 - sA)) *
+            demultiply;
+          imageData[i + 2] =
+            (sBA * (dBA * vigOpac) + sBA * (1 - dA) + dBA * (1 - sA)) *
+            demultiply;
+
+          // imageData[i] = (r * r2) / 255;
+          // imageData[i + 1] = (g * g2) / 255;
+          // imageData[i + 2] = (b * b2) / 255;
+          // let sRA = r2/255;
+          // let dRA = r1/255;
+          // let sA = 1;
+          // let dA = 1;
+          // let demultiply = 255;
+
+          // // muliply here
+          // dst[px  ] = (sRA*dRA) * 255;
+          // 					dst[px+1] = (sGA*dGA + sGA*(1-1) + dGA*(1-1)) * demultiply;
+          // 					dst[px+2] = (sBA*dBA + sBA*(1-1) + dBA*(1-1)) * demultiply;
+        }
+      } catch (err) {
+        console.log(err);
+        errMSG.innerText = err;
+        errMSG.style.backgroundColor = "red";
+        return;
+      }
+
+      //ctx2.putImageData(imageDataWrapper, 0, 0);
+    }
+
     ctx2.putImageData(imageDataWrapper, 0, 0);
+    // blending process
+
     //console.log("processing Done!");
+
     errMSG.innerText = "Processing Completed!";
     errMSG.style.backgroundColor = "grey";
     canvasResizer();
 
     let originalImg = new Image();
     let resultImg = new Image();
+
     originalImg = convertCanvasToImage(c);
     resultImg = convertCanvasToImage(c2);
+
+    // textureCanvasContext.globalCompositeOpeartion = "overlay";
+    // textureCanvasContext.drawImage(c, 0, 0);
+    // textureCanvasContext.drawImage(c2, 0, 0);
+
+    //textureAppliedImage = convertCanvasToImage(textureCanvas);
     originalImg.style.width = "50%";
     resultImg.style.width = "50%";
+    //textureAppliedImage.style.width = "50%";
+    let textureMsg = " ";
+    let vignetteMsg = " ";
+    if (isTextureOn) {
+      textureMsg = "Grain☑️ ";
+    }
+    if (isVigOn) {
+      vignetteMsg = "Vig☑️";
+    }
 
     let lutTitle = document.createTextNode(
       imgManagerSt.srcname.concat(
@@ -395,6 +633,8 @@ function Home({
         opacity,
         "%",
         ") ",
+        textureMsg,
+        vignetteMsg,
         " >>> ❌[DEL]"
       )
     );
@@ -414,11 +654,15 @@ function Home({
     } else {
       resultArea.appendChild(resultBox);
     }
+    //css blend
+    //originalImg.className = "blend1";
+    //originalImg.width = "300";
 
     resultBox.appendChild(lutBtn);
     resultBox.appendChild(divEl);
     resultBox.appendChild(originalImg);
     resultBox.appendChild(resultImg);
+    //resultBox.appendChild(textureAppliedImage);
     lutBtn.addEventListener("click", removeResult);
     lutBtn.className = "btn btn-2 btn-2d";
   }
@@ -918,6 +1162,29 @@ function Home({
       </div>
 
       <div className="controlBtnArea">
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={isTextureOn}
+              onChange={handleTexture}
+              name="checkedB"
+              color="primary"
+            />
+          }
+          label="Grain"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={isVigOn}
+              onChange={handleVig}
+              name="checkedB"
+              color="primary"
+            />
+          }
+          label="Vignette"
+        />
+
         <Button className={classes.root} onClick={onClick}>
           Apply LUT
         </Button>
@@ -931,6 +1198,11 @@ function Home({
         <canvas ref={srcCanvasEl} id="srcCanvas" className="workCanvas" />
         <canvas ref={resultCanvasEl} id="resultCanvas" className="workCanvas" />
         <canvas ref={lutCanvasEl} id="lutCanvas" className="workCanvas" />
+        <canvas
+          ref={textureCanvasEl}
+          id="textureCanvas"
+          className="workCanvas"
+        />
       </div>
       <div ref={resultAreaEl} id="resultArea" />
     </>
