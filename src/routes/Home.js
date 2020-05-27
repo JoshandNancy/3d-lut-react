@@ -991,10 +991,14 @@ function Home({
   };
 
   function onLoadSample() {
+    errMSG.innerText = "Updating image list!";
+    errMSG.style.backgroundColor = themeColors.processing_yellow;
     getSamples();
   }
 
   function onLoadLUTs() {
+    errMSG.innerText = "Updating LUT list!";
+    errMSG.style.backgroundColor = themeColors.processing_yellow;
     getLUTs();
   }
 
